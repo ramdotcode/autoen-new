@@ -27,7 +27,7 @@ export function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-bg pt-24"
+      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-bg pt-24 lg:justify-center"
     >
       <div className="bg-grid bg-grid-fade absolute inset-0" aria-hidden />
       <div
@@ -52,7 +52,7 @@ export function Hero() {
 
       <motion.div
         style={{ y: textY, opacity: fade }}
-        className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:px-8 md:pb-24"
+        className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:px-8 md:pb-24 lg:py-16"
       >
         <motion.p
           initial={reduce ? false : { opacity: 0 }}

@@ -1,14 +1,28 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
-import { hero } from '../data/content'
+import { useI18n } from '../i18n'
 import { Button } from './ui/Button'
 import { NetworkGlobe } from './NetworkGlobe'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+/** Wraps the highlighted phrase of a headline line in the gradient treatment. */
+function HeadlineLine({ line, highlight }: { line: string; highlight: string }) {
+  const at = line.indexOf(highlight)
+  if (at === -1) return <>{line}</>
+  return (
+    <>
+      {line.slice(0, at)}
+      <span className="text-gradient">{highlight}</span>
+      {line.slice(at + highlight.length)}
+    </>
+  )
+}
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80])
   const globeY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140])
@@ -60,12 +74,12 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="eyebrow mb-6"
         >
-          Automation · IoT · Smart Industry
+          {t.hero.eyebrow}
         </motion.p>
 
         <h1 className="max-w-4xl text-[2.75rem] font-medium leading-[1.02] tracking-[-0.035em] text-fg sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-          {hero.title.map((line, i) => (
-            <span key={line} className="block overflow-hidden">
+          {t.hero.titleLines.map((line, i) => (
+            <span key={i} className="block overflow-hidden">
               <motion.span
                 custom={i}
                 variants={reduce ? undefined : lineVariants}
@@ -73,13 +87,7 @@ export function Hero() {
                 animate={reduce ? undefined : 'visible'}
                 className="block"
               >
-                {i === 2 ? (
-                  <>
-                    through <span className="text-gradient">smart solutions.</span>
-                  </>
-                ) : (
-                  line
-                )}
+                <HeadlineLine line={line} highlight={t.hero.highlight} />
               </motion.span>
             </span>
           ))}
@@ -91,7 +99,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease, delay: 0.65 }}
           className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg"
         >
-          {hero.subtitle}
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div
@@ -100,11 +108,11 @@ export function Hero() {
           transition={{ duration: 0.8, ease, delay: 0.8 }}
           className="mt-9 flex flex-wrap items-center gap-3"
         >
-          <Button href={hero.primaryCta.href} arrow>
-            {hero.primaryCta.label}
+          <Button href="#contact" arrow>
+            {t.hero.primaryCta}
           </Button>
-          <Button href={hero.secondaryCta.href} variant="ghost">
-            {hero.secondaryCta.label}
+          <Button href="#services" variant="ghost">
+            {t.hero.secondaryCta}
           </Button>
         </motion.div>
       </motion.div>
@@ -117,7 +125,7 @@ export function Hero() {
         aria-hidden
       >
         <span className="h-px w-8 bg-line-strong" />
-        Scroll
+        {t.hero.scroll}
         <span className="h-px w-8 bg-line-strong" />
       </motion.div>
     </section>

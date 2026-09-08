@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView, useReducedMotion } from 'motion/react'
-import { stats } from '../data/content'
+import { useI18n } from '../i18n'
 import { stagger, fadeUp, viewportOnce } from '../lib/motion'
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
+  const { lang } = useI18n()
   const reduce = useReducedMotion()
   const [display, setDisplay] = useState(reduce ? value : 0)
 
@@ -21,7 +22,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <span ref={ref} className="tabular-nums">
-      {display.toLocaleString('en-US')}
+      {display.toLocaleString(lang === 'id' ? 'id-ID' : 'en-US')}
       {suffix}
     </span>
   )
@@ -29,8 +30,9 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function Stats() {
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   return (
-    <section className="border-y border-line bg-bg" aria-label="Company statistics">
+    <section className="border-y border-line bg-bg" aria-label={t.a11y.statistics}>
       <motion.dl
         variants={reduce ? undefined : stagger(0, 0.1)}
         initial={reduce ? undefined : 'hidden'}
@@ -38,7 +40,7 @@ export function Stats() {
         viewport={viewportOnce}
         className="mx-auto grid max-w-7xl grid-cols-2 divide-line md:grid-cols-4 md:divide-x"
       >
-        {stats.map((s) => (
+        {t.stats.map((s) => (
           <motion.div
             key={s.label}
             variants={reduce ? undefined : fadeUp}

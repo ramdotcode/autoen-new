@@ -1,9 +1,12 @@
 import { ArrowUpRight } from 'lucide-react'
-import { company, nav } from '../data/content'
+import { company } from '../data/content'
+import { useI18n } from '../i18n'
 import { Reveal } from './ui/Reveal'
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const { t } = useI18n()
+
   return (
     <footer className="border-t border-line bg-bg-deep">
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
@@ -14,12 +17,10 @@ export function Footer() {
               className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-line-strong hover:bg-surface-2 md:p-9"
             >
               <div className="flex items-start justify-between">
-                <h3 className="text-2xl font-medium tracking-[-0.02em] text-fg">Work with us</h3>
+                <h3 className="text-2xl font-medium tracking-[-0.02em] text-fg">{t.footer.workWithUs.title}</h3>
                 <ArrowUpRight size={20} className="text-dim transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" aria-hidden />
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-muted">
-                We partner with manufacturers, utilities and city operators to build automation and IoT systems that last.
-              </p>
+              <p className="mt-6 text-sm leading-relaxed text-muted">{t.footer.workWithUs.text}</p>
             </a>
           </Reveal>
           <Reveal delay={0.08}>
@@ -28,12 +29,10 @@ export function Footer() {
               className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-line-strong hover:bg-surface-2 md:p-9"
             >
               <div className="flex items-start justify-between">
-                <h3 className="text-2xl font-medium tracking-[-0.02em] text-fg">Request a demo</h3>
+                <h3 className="text-2xl font-medium tracking-[-0.02em] text-fg">{t.footer.demo.title}</h3>
                 <ArrowUpRight size={20} className="text-dim transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" aria-hidden />
               </div>
-              <p className="mt-6 text-sm leading-relaxed text-muted">
-                See how an IoT dashboard, PLC retrofit or RPA workflow would look on your own process.
-              </p>
+              <p className="mt-6 text-sm leading-relaxed text-muted">{t.footer.demo.text}</p>
             </a>
           </Reveal>
         </div>
@@ -55,9 +54,9 @@ export function Footer() {
 
           <div className="grid gap-10 sm:grid-cols-2 md:gap-16">
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Navigate</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.footer.navigate}</p>
               <ul className="mt-4 space-y-2.5">
-                {nav.map((n) => (
+                {t.nav.map((n) => (
                   <li key={n.href}>
                     <a href={n.href} className="text-sm text-muted transition-colors hover:text-fg">
                       {n.label}
@@ -66,13 +65,13 @@ export function Footer() {
                 ))}
                 <li>
                   <a href="#contact" className="text-sm text-muted transition-colors hover:text-fg">
-                    Contact
+                    {t.footer.contact}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Reach us</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.footer.reachUs}</p>
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <a href={company.phoneHref} className="text-sm text-muted transition-colors hover:text-fg">
@@ -93,9 +92,9 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-dim sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} PT {company.name}. All rights reserved.
+            © {year} PT {company.name}. {t.footer.rights}
           </p>
-          <p>{company.short} · {company.tagline}</p>
+          <p>{company.short} · {t.footer.tagline}</p>
         </div>
       </div>
     </footer>

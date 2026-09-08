@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
 import { company } from '../data/content'
+import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { Button } from './ui/Button'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
@@ -11,6 +12,7 @@ const inputCls =
 
 export function Contact() {
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   const [sent, setSent] = useState(false)
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -20,17 +22,17 @@ export function Contact() {
     const email = String(data.get('email') ?? '')
     const companyName = String(data.get('company') ?? '')
     const message = String(data.get('message') ?? '')
-    const subject = encodeURIComponent(`Project inquiry from ${name}${companyName ? ` — ${companyName}` : ''}`)
+    const subject = encodeURIComponent(t.contact.mailSubject(name, companyName))
     const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}\n${companyName}`)
     window.location.href = `mailto:${company.emails[0]}?subject=${subject}&body=${body}`
     setSent(true)
   }
 
   const info = [
-    { icon: MapPin, label: 'Address', lines: company.address },
-    { icon: Phone, label: 'Call us', lines: [company.phone], href: company.phoneHref },
-    { icon: Mail, label: 'Email us', lines: company.emails, href: `mailto:${company.emails[0]}` },
-    { icon: Clock, label: 'Open hours', lines: [company.hours] },
+    { icon: MapPin, label: t.contact.labels.address, lines: company.address },
+    { icon: Phone, label: t.contact.labels.phone, lines: [company.phone], href: company.phoneHref },
+    { icon: Mail, label: t.contact.labels.email, lines: company.emails, href: `mailto:${company.emails[0]}` },
+    { icon: Clock, label: t.contact.labels.hours, lines: [t.contact.hours] },
   ]
 
   return (
@@ -40,11 +42,7 @@ export function Contact() {
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-6 md:px-8">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Ready to solve your challenges with Autoen?"
-          text="Tell us about your operation. We'll come back with a first assessment and the next step."
-        />
+        <SectionHeading eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
           <motion.ul
@@ -92,28 +90,28 @@ export function Contact() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Name</span>
-                <input name="name" required autoComplete="name" className={inputCls} placeholder="Your name" />
+                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.name}</span>
+                <input name="name" required autoComplete="name" className={inputCls} placeholder={t.contact.form.namePlaceholder} />
               </label>
               <label className="block">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Business email</span>
-                <input name="email" type="email" required autoComplete="email" className={inputCls} placeholder="you@company.com" />
+                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.email}</span>
+                <input name="email" type="email" required autoComplete="email" className={inputCls} placeholder={t.contact.form.emailPlaceholder} />
               </label>
               <label className="block sm:col-span-2">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Company</span>
-                <input name="company" autoComplete="organization" className={inputCls} placeholder="Company or institution" />
+                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.company}</span>
+                <input name="company" autoComplete="organization" className={inputCls} placeholder={t.contact.form.companyPlaceholder} />
               </label>
               <label className="block sm:col-span-2">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">Message</span>
-                <textarea name="message" required rows={5} className={`${inputCls} resize-y`} placeholder="What are you trying to improve?" />
+                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.message}</span>
+                <textarea name="message" required rows={5} className={`${inputCls} resize-y`} placeholder={t.contact.form.messagePlaceholder} />
               </label>
             </div>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button type="submit" arrow>
-                Send message
+                {t.contact.form.submit}
               </Button>
               <p className="text-xs text-dim" aria-live="polite">
-                {sent ? 'Your email client should open with the message prepared.' : 'Opens your email client — no data is stored on this site.'}
+                {sent ? t.contact.form.sentHint : t.contact.form.hint}
               </p>
             </div>
           </motion.form>

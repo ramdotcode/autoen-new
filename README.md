@@ -30,19 +30,38 @@ npm run qa:interactions # mobile menu, value tabs, reduced-motion, tab order
 ## Structure
 ```
 src/
-  data/content.ts        all copy, contact details, services, process steps
+  i18n/
+    en.ts, id.ts         all copy, per language (English / Bahasa Indonesia)
+    types.ts             the Dictionary shape both languages must satisfy
+    context.ts           language state, detection, persistence, useI18n()
+    provider.tsx         <I18nProvider> — wraps the app in main.tsx
+  data/content.ts        language-independent company data (address, phone, email)
   lib/motion.ts          shared variants / easing
   components/
     Navbar, Hero (+ NetworkGlobe canvas), Manifesto (scroll word reveal),
     Stats (count-up), Approach, Services (+ marquee), Process (timeline),
     WhyUs, CoreValues (tabs), Contact, Footer
-    ui/  Button, Reveal, SectionHeading
+    ui/  Button, Reveal, SectionHeading, LanguageToggle
 public/img/              logo, favicon and illustrations from the previous site
 ```
 
 ## Editing content
-Everything textual lives in `src/data/content.ts`. Change a service, a step or
-the phone number there and every section updates.
+The site is bilingual (English / Bahasa Indonesia). Every visible string lives in
+`src/i18n/en.ts` and `src/i18n/id.ts` — edit a service, a step or a heading there
+and the matching section updates. Both files are typed against `Dictionary` in
+`src/i18n/types.ts`, so adding a key to one language and forgetting the other is
+a build error.
+
+Contact details that do not change with language (address, phone, email) live in
+`src/data/content.ts`.
+
+## Language switching
+`<I18nProvider>` in `src/main.tsx` holds the active language and exposes it via
+`useI18n()`. On first visit it reads the browser locale (`id-*` → Indonesian,
+everything else → English); after that the choice is remembered in
+`localStorage` under `autoen.lang`. Switching also updates `<html lang>`, the
+document title and the meta description. The EN / ID toggle sits in the navbar
+on desktop and next to the menu button on mobile.
 
 ## Deploy
 `npm run build` produces a static `dist/` folder. It works on Firebase Hosting

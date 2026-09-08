@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react'
-import { manifesto } from '../data/content'
+import { useI18n } from '../i18n'
 
 function Word({
   word,
@@ -23,17 +23,18 @@ function Word({
 export function Manifesto() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.55'] })
-  const words = manifesto.split(' ')
+  const words = t.manifesto.text.split(' ')
 
   return (
-    <section ref={ref} id="about" className="relative bg-bg-deep" aria-label="Our vision">
+    <section ref={ref} id="about" className="relative bg-bg-deep" aria-label={t.a11y.vision}>
       <div className="sticky top-0 flex min-h-[100svh] items-center">
         <div className="mx-auto w-full max-w-7xl px-6 py-24 md:px-8">
-          <p className="eyebrow mb-8">Our vision</p>
+          <p className="eyebrow mb-8">{t.manifesto.eyebrow}</p>
           {reduce ? (
             <p className="max-w-5xl text-2xl font-medium leading-[1.25] tracking-[-0.02em] text-fg sm:text-3xl md:text-[2.75rem] md:leading-[1.2] lg:text-[3.25rem]">
-              {manifesto}
+              {t.manifesto.text}
             </p>
           ) : (
             <p className="max-w-5xl text-2xl font-medium leading-[1.25] tracking-[-0.02em] sm:text-3xl md:text-[2.75rem] md:leading-[1.2] lg:text-[3.25rem]">

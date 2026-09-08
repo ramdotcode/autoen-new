@@ -1,10 +1,11 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { whyUs } from '../data/content'
+import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
 
 export function WhyUs() {
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   return (
     <section className="relative overflow-hidden bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
@@ -19,7 +20,7 @@ export function WhyUs() {
             <div className="absolute inset-0 -z-10 rounded-full bg-accent/20 blur-[120px]" aria-hidden />
             <img
               src="/img/alt-features.png"
-              alt="Illustration of secure, connected industrial systems"
+              alt={t.whyUs.imageAlt}
               loading="lazy"
               className="w-full rounded-2xl border border-line object-cover"
             />
@@ -27,8 +28,8 @@ export function WhyUs() {
 
           <div className="order-1 lg:order-2">
             <SectionHeading
-              eyebrow="Why Autoen"
-              title="A partner for the whole transformation, not just the install."
+              eyebrow={t.whyUs.eyebrow}
+              title={t.whyUs.title}
             />
             <motion.ul
               variants={reduce ? undefined : stagger(0.15, 0.08)}
@@ -37,7 +38,7 @@ export function WhyUs() {
               viewport={viewportOnce}
               className="mt-10 divide-y divide-line border-y border-line"
             >
-              {whyUs.map((w, i) => (
+              {t.whyUs.items.map((w, i) => (
                 <motion.li
                   key={w.title}
                   variants={reduce ? undefined : fadeUp}

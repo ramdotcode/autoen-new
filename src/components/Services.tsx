@@ -1,11 +1,12 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
-import { services, marqueeItems } from '../data/content'
+import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
 
 function Marquee() {
-  const items = [...marqueeItems, ...marqueeItems]
+  const { t } = useI18n()
+  const items = [...t.services.marquee, ...t.services.marquee]
   return (
     <div className="relative mt-20 overflow-hidden border-y border-line py-5" aria-hidden>
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg to-transparent" />
@@ -24,14 +25,15 @@ function Marquee() {
 
 export function Services() {
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   return (
     <section id="services" className="relative bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            eyebrow="Services"
-            title="Everything needed to run a smarter operation."
-            text="Six capabilities, one accountable partner — from sensors on the floor to the software that turns their data into decisions."
+            eyebrow={t.services.eyebrow}
+            title={t.services.title}
+            text={t.services.text}
           />
         </div>
 
@@ -42,7 +44,7 @@ export function Services() {
           viewport={viewportOnce}
           className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((s) => {
+          {t.services.items.map((s) => {
             const Icon = s.icon
             return (
               <motion.li
@@ -64,7 +66,7 @@ export function Services() {
                 </div>
                 <h3 className="mt-6 text-lg font-medium tracking-tight text-fg">{s.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{s.text}</p>
-                <ul className="mt-6 flex flex-wrap gap-2" aria-label="Capabilities">
+                <ul className="mt-6 flex flex-wrap gap-2" aria-label={t.a11y.capabilities}>
                   {s.tags.map((t) => (
                     <li
                       key={t}

@@ -1,27 +1,29 @@
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { coreValues } from '../data/content'
+import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { Reveal } from './ui/Reveal'
 
 export function CoreValues() {
   const [active, setActive] = useState(0)
   const reduce = useReducedMotion()
-  const current = coreValues[active]
+  const { t } = useI18n()
+  const values = t.coreValues.items
+  const current = values[active]
 
   return (
     <section id="values" className="relative bg-bg-deep py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <SectionHeading
-          eyebrow="Core values"
-          title="What we stand for in every project."
-          text="These values empower us to deliver technology that drives real growth for clients and partners."
+          eyebrow={t.coreValues.eyebrow}
+          title={t.coreValues.title}
+          text={t.coreValues.text}
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
-            <ul className="divide-y divide-line border-y border-line" role="tablist" aria-label="Core values">
-              {coreValues.map((v, i) => {
+            <ul className="divide-y divide-line border-y border-line" role="tablist" aria-label={t.a11y.coreValues}>
+              {values.map((v, i) => {
                 const isActive = i === active
                 return (
                   <li key={v.title}>
@@ -71,7 +73,9 @@ export function CoreValues() {
                   exit={reduce ? undefined : { opacity: 0, y: -8 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <p className="eyebrow">Value 0{active + 1}</p>
+                  <p className="eyebrow">
+                    {t.coreValues.valuePrefix} 0{active + 1}
+                  </p>
                   <h3 className="mt-4 text-3xl font-medium tracking-[-0.03em] text-fg md:text-4xl">{current.title}</h3>
                   <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{current.text}</p>
                 </motion.div>

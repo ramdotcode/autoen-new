@@ -1,19 +1,20 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { approach } from '../data/content'
+import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
 
 export function Approach() {
   const reduce = useReducedMotion()
+  const { t } = useI18n()
   return (
     <section className="relative bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <SectionHeading
-              eyebrow="What we value most"
-              title="Smart solutions for a connected future."
-              text="We are a team of experienced professionals who design, integrate and support automation and IoT systems — from the first assessment to years after go-live."
+              eyebrow={t.approach.eyebrow}
+              title={t.approach.title}
+              text={t.approach.text}
             />
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
@@ -24,7 +25,7 @@ export function Approach() {
             >
               <img
                 src="/img/about.jpg"
-                alt="Autoen engineers discussing an IoT and automation workflow"
+                alt={t.approach.imageAlt}
                 loading="lazy"
                 className="aspect-[3/2] w-full object-cover"
               />
@@ -39,7 +40,7 @@ export function Approach() {
             viewport={viewportOnce}
             className="grid gap-4 sm:grid-cols-2 lg:col-span-7 lg:mt-14"
           >
-            {approach.map((item) => (
+            {t.approach.items.map((item) => (
               <motion.li
                 key={item.title}
                 variants={reduce ? undefined : fadeUp}

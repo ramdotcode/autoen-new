@@ -90,10 +90,9 @@ export const en: Dictionary = {
 
   profile: {
     eyebrow: 'Company profile',
-    title: 'Engineers from Bekasi, working for Indonesian industry.',
+    title: 'An engineering partner for Indonesian industry.',
     paragraphs: [
-      'Autoen Industri Teknologi (AITEK) is an engineering company based in North Bekasi, Bekasi City. What we do is simple to explain: we make the machines, robots and systems where you work run cleaner, faster and break down less.',
-      "We don't sell everyone the same package. Usually we visit first, walk your production line or facility, talk to the operators, and only then put a proposal together. The people who design the system also install and test it on site.",
+      'Autoen Industri Teknologi (AITEK) is an engineering company handling industrial automation, machines, robotics and IoT for factories and cities in Indonesia.',
     ],
     facts: [
       { label: 'Office', value: 'North Bekasi, Bekasi City' },

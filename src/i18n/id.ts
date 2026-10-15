@@ -90,10 +90,9 @@ export const id: Dictionary = {
 
   profile: {
     eyebrow: 'Profil perusahaan',
-    title: 'Orang teknik, dari Bekasi, untuk industri Indonesia.',
+    title: 'Mitra teknik untuk industri Indonesia.',
     paragraphs: [
-      'Autoen Industri Teknologi (AITEK) adalah perusahaan teknik yang berkantor di Bekasi Utara, Kota Bekasi. Pekerjaan kami sederhana untuk dijelaskan: membuat mesin, robot, dan sistem di tempat Anda bekerja lebih rapi, lebih cepat, dan lebih jarang rusak.',
-      'Kami tidak menjual paket yang sama ke semua orang. Biasanya kami datang dulu, melihat lini produksi atau fasilitas Anda, ngobrol dengan operatornya, baru kemudian menyusun usulan. Yang merancang sistemnya juga ikut memasang dan mengetesnya di lokasi.',
+      'Autoen Industri Teknologi (AITEK) adalah perusahaan teknik yang menangani otomasi industri, mesin, robotik, dan IoT untuk pabrik dan kota di Indonesia.',
     ],
     facts: [
       { label: 'Kantor', value: 'Bekasi Utara, Kota Bekasi' },

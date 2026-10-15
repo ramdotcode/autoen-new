@@ -238,5 +238,10 @@ Teks yang sudah dipilih. Yang dicentang sudah dipasang di branch `development`
   3. Menyelesaikan pekerjaan sampai sistem berjalan stabil dan bisa dioperasikan tim klien.
   4. Mendampingi klien setelah proyek selesai, bukan hanya sampai serah terima.
 
+- [x] **Profil perusahaan** (`profile.title`, `profile.paragraphs`): judul "Mitra
+      teknik untuk industri Indonesia." + satu paragraf tanpa lokasi: Autoen
+      Industri Teknologi (AITEK) adalah perusahaan teknik yang menangani otomasi
+      industri, mesin, robotik, dan IoT untuk pabrik dan kota di Indonesia.
+
 Semua teks 🔴 dari bagian 7 sudah diganti. Sisa yang 🟡 (kartu IoT & Smart
 City, tahap 01/03/04 Proses, label statistik) masih teks lama.

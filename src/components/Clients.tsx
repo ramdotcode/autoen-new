@@ -30,7 +30,13 @@ export function Clients() {
               transition={{ duration: 0.3 }}
               className="card-glow flex h-28 w-full items-center justify-center rounded-2xl border border-line bg-surface px-8 transition-colors hover:bg-surface-2 sm:w-64"
             >
-              <img src={c.logo} alt={c.name} title={c.name} className="max-h-12 w-auto max-w-full object-contain" loading="lazy" />
+              <img
+                src={c.logo}
+                alt={c.name}
+                title={c.name}
+                className={`${c.tall ? 'max-h-16' : 'max-h-12'} w-auto max-w-full object-contain`}
+                loading="lazy"
+              />
             </motion.li>
           ))}
         </motion.ul>

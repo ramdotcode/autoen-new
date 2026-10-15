@@ -43,6 +43,7 @@ ke bagian klien di halaman Profil.
       transparan. File aslinya kecil (447 px), jadi kalau ada versi lebih besar
       atau SVG, sebaiknya diganti.
 - [x] **ABB**: ABB_logo.svg dari Wikimedia Commons, warnanya diubah jadi putih.
+- [x] **BWI Aviation**: logo dari owner (sudah transparan), diubah jadi putih.
 - [ ] Kalau owner punya file logo resmi dari klien, sebaiknya pakai yang itu.
 - [ ] Logo klien lain → taruh di `public/img/clients/`, lalu tambahkan di `clients.ts`.
       Pakai versi putih/terang supaya kelihatan di latar gelap.

@@ -85,7 +85,7 @@ export const id: Dictionary = {
 
   manifesto: {
     eyebrow: 'Visi kami',
-    text: 'Kami ingin jadi tim yang pertama kali dicari ketika pabrik, gedung, atau kota di Indonesia butuh sistemnya bekerja lebih pintar.',
+    text: 'Menjadi perusahaan otomasi yang dipercaya pabrik dan kota di Indonesia untuk sistem yang andal dan mudah dirawat.',
   },
 
   profile: {
@@ -102,10 +102,10 @@ export const id: Dictionary = {
     ],
     missionTitle: 'Misi kami',
     mission: [
-      'Melihat langsung masalahnya di lapangan sebelum menawarkan solusi apa pun.',
-      'Memilih teknologi yang pas dengan kebutuhan dan anggaran, bukan yang paling mahal.',
-      'Mengerjakan sampai sistemnya benar-benar jalan, lalu mengajari tim Anda cara memakainya.',
-      'Tetap bisa dihubungi setelah proyek selesai. Kalau ada yang bermasalah, kami yang datang.',
+      'Memahami masalah langsung di lokasi sebelum menawarkan solusi.',
+      'Memilih teknologi yang sesuai dengan kebutuhan dan anggaran klien.',
+      'Menyelesaikan pekerjaan sampai sistem berjalan stabil dan bisa dioperasikan tim klien.',
+      'Mendampingi klien setelah proyek selesai, bukan hanya sampai serah terima.',
     ],
   },
 

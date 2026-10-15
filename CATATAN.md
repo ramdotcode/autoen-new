@@ -228,5 +228,13 @@ Teks yang sudah dipilih. Yang dicentang sudah dipasang di branch `development`
       pabrik di Indonesia. Kami bantu menekan downtime dan memantau produksi dari
       mana saja.
 
+- [x] **Visi** (`manifesto.text`): Menjadi perusahaan otomasi yang dipercaya
+      pabrik dan kota di Indonesia untuk sistem yang andal dan mudah dirawat.
+- [x] **Misi** (`profile.mission`, versi profesional):
+  1. Memahami masalah langsung di lokasi sebelum menawarkan solusi.
+  2. Memilih teknologi yang sesuai dengan kebutuhan dan anggaran klien.
+  3. Menyelesaikan pekerjaan sampai sistem berjalan stabil dan bisa dioperasikan tim klien.
+  4. Mendampingi klien setelah proyek selesai, bukan hanya sampai serah terima.
+
 Semua teks 🔴 dari bagian 7 sudah diganti. Sisa yang 🟡 (kartu IoT & Smart
 City, tahap 01/03/04 Proses, label statistik) masih teks lama.

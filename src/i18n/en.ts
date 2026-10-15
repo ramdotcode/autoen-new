@@ -85,7 +85,7 @@ export const en: Dictionary = {
 
   manifesto: {
     eyebrow: 'Our vision',
-    text: 'We want to be the team people call first when a factory, a building or a city in Indonesia needs its systems to work smarter.',
+    text: 'To be the automation company factories and cities in Indonesia trust for systems that are reliable and easy to maintain.',
   },
 
   profile: {
@@ -102,10 +102,10 @@ export const en: Dictionary = {
     ],
     missionTitle: 'Our mission',
     mission: [
-      'See the problem on site with our own eyes before offering any solution.',
-      'Pick the technology that fits the need and the budget, not the most expensive one.',
-      'Keep working until the system actually runs, then teach your team how to use it.',
-      "Stay reachable after the project ends. If something goes wrong, we're the ones who show up.",
+      'Understand the problem on site before offering a solution.',
+      "Choose technology that fits the client's needs and budget.",
+      "Finish the work until the system runs reliably and the client's team can operate it.",
+      'Support clients after the project ends, not just until handover.',
     ],
   },
 

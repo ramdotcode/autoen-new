@@ -17,7 +17,6 @@ export function CoreValues() {
         <SectionHeading
           eyebrow={t.coreValues.eyebrow}
           title={t.coreValues.title}
-          text={t.coreValues.text}
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">

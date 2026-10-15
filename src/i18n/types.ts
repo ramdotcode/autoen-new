@@ -78,14 +78,6 @@ export type Dictionary = {
 
   stats: { value: number; suffix: string; label: string }[]
 
-  approach: {
-    eyebrow: string
-    title: string
-    text: string
-    imageAlt: string
-    items: { image: string; title: string; text: string }[]
-  }
-
   services: {
     eyebrow: string
     title: string
@@ -112,7 +104,6 @@ export type Dictionary = {
   coreValues: {
     eyebrow: string
     title: string
-    text: string
     valuePrefix: string
     items: { title: string; text: string }[]
   }

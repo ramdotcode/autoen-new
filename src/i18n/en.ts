@@ -5,7 +5,7 @@ export const en: Dictionary = {
   meta: {
     title: 'Autoen Industri Teknologi | Automation & IoT Solutions',
     description:
-      'Autoen Industri Teknologi (AITEK) delivers industrial automation, IoT and smart-city solutions that help businesses transform for Industry 4.0.',
+      'Automation, robotics and IoT for factories in Indonesia. We help cut downtime and monitor production from anywhere.',
   },
   skipToContent: 'Skip to content',
   languageName: 'English',
@@ -136,35 +136,6 @@ export const en: Dictionary = {
     { value: 15, suffix: '', label: 'Engineers & specialists' },
   ],
 
-  approach: {
-    eyebrow: 'What we value most',
-    title: 'Smart solutions for a connected future.',
-    text: 'We are a team of experienced professionals who design, integrate and support automation and IoT systems, from the first assessment to years after go-live.',
-    imageAlt: 'Autoen engineers discussing an IoT and automation workflow',
-    items: [
-      {
-        image: '/img/values-5.png',
-        title: 'Customer-centric approach',
-        text: 'We believe quality begins and ends with the customer. Every system we build starts from your operational reality.',
-      },
-      {
-        image: '/img/values-6.png',
-        title: 'Smart solutions, big results',
-        text: 'We focus on the most significant outcome with the least effort, time and cost. Efficiency is designed in from the start.',
-      },
-      {
-        image: '/img/values-4.png',
-        title: 'Innovation & latest technology',
-        text: 'We leverage advanced automation, AI and IoT to drive speed, accuracy and efficiency across your operations.',
-      },
-      {
-        image: '/img/values-7.png',
-        title: 'After-sales support',
-        text: 'Our support is designed with one goal: the long-term satisfaction and success of every customer we serve.',
-      },
-    ],
-  },
-
   services: {
     eyebrow: 'Products',
     title: 'What we can build for you.',
@@ -233,8 +204,8 @@ export const en: Dictionary = {
       },
       {
         step: '02',
-        title: 'Our approach',
-        text: 'A structured assessment turns problems into a clear solution design.',
+        title: 'Site survey & design',
+        text: 'Our team visits your site, sees the process first-hand, then drafts the solution design with you.',
         items: ['Problem assessment', 'Solution design'],
       },
       {
@@ -290,7 +261,6 @@ export const en: Dictionary = {
   coreValues: {
     eyebrow: 'Core values',
     title: 'What we stand for in every project.',
-    text: 'These values empower us to deliver technology that drives real growth for clients and partners.',
     valuePrefix: 'Value',
     items: [
       { title: 'Innovation', text: 'We adopt new technology when it proves better, not just because it is new.' },
@@ -323,17 +293,17 @@ export const en: Dictionary = {
   footer: {
     workWithUs: {
       title: 'Work with us',
-      text: 'We partner with manufacturers, utilities and city operators to build automation and IoT systems that last.',
+      text: 'We work with factories, utility operators and city governments.',
     },
     demo: {
       title: 'Request a demo',
-      text: 'See how an IoT dashboard, PLC retrofit or RPA workflow would look on your own process.',
+      text: 'See a working IoT dashboard or automation system before you decide.',
       topic: 'Demo request',
     },
     navigate: 'Navigate',
     reachUs: 'Reach us',
     contact: 'Contact',
     rights: 'All rights reserved.',
-    tagline: 'Automation & IoT solutions for Industry 4.0',
+    tagline: 'Automation, machines, robotics and IoT for industry',
   },
 }

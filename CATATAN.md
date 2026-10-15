@@ -214,11 +214,19 @@ Teks yang sudah dipilih. Yang dicentang sudah dipasang di branch `development`
   - Keamanan: Akses ke mesin dan data Anda hanya untuk orang yang berwenang.
   - Efisiensi: Secukupnya, tidak berlebihan. Satu sensor kalau memang cukup satu.
   - Integritas: Kendala dan keterlambatan kami sampaikan lebih dulu.
-- [ ] **Nilai utama, pembuka** (`coreValues.text`): usulan versi pendek "Prinsip kerja
-      yang kami pegang, dari survei pertama sampai perawatan." (belum dikonfirmasi)
+- [x] **Nilai utama, pembuka** (`coreValues.text`): dihapus, langsung ke daftar nilai.
+- [x] **"Yang paling kami utamakan"** (`approach`): section dihapus dari Beranda
+      karena isinya sama dengan "Kenapa klien memilih Autoen".
+- [x] **Tahap 02 Proses**: "Survei & perancangan". Tim kami datang ke lokasi,
+      melihat prosesnya langsung, lalu menyusun rancangan solusi bersama Anda.
+- [x] **Footer, Bekerja sama**: Kami bekerja sama dengan pabrik, pengelola
+      utilitas, dan pemerintah kota. **[cek: memang pernah dengan pemerintah kota?]**
+- [x] **Footer, Minta demo**: Lihat contoh dasbor IoT atau sistem otomasi yang
+      sudah berjalan sebelum memutuskan. **[cek: ada contoh yang bisa didemokan?]**
+- [x] **Footer, tagline**: Otomasi, mesin, robotik, dan IoT untuk industri.
+- [x] **Deskripsi Google** (`meta.description`): Otomasi, robotik, dan IoT untuk
+      pabrik di Indonesia. Kami bantu menekan downtime dan memantau produksi dari
+      mana saja.
 
-### Masih harus diputuskan
-- [ ] Pembuka nilai utama (`coreValues.text`): pakai usulan di atas, ganti, atau hapus.
-- [ ] Section "Yang paling kami utamakan" (`approach`) di Beranda: dihapus
-      (isinya mirip "Kenapa klien memilih Autoen") atau ditulis ulang.
-- [ ] Tahap 02 di Proses, footer, dan deskripsi Google (lihat bagian 7).
+Semua teks 🔴 dari bagian 7 sudah diganti. Sisa yang 🟡 (kartu IoT & Smart
+City, tahap 01/03/04 Proses, label statistik) masih teks lama.

@@ -5,7 +5,7 @@ export const id: Dictionary = {
   meta: {
     title: 'Autoen Industri Teknologi | Solusi Otomasi & IoT',
     description:
-      'Autoen Industri Teknologi (AITEK) menghadirkan solusi otomasi industri, IoT dan smart city untuk mendukung transformasi bisnis di era Industri 4.0.',
+      'Otomasi, robotik, dan IoT untuk pabrik di Indonesia. Kami bantu menekan downtime dan memantau produksi dari mana saja.',
   },
   skipToContent: 'Lompat ke konten',
   languageName: 'Bahasa Indonesia',
@@ -136,35 +136,6 @@ export const id: Dictionary = {
     { value: 15, suffix: '', label: 'Insinyur & spesialis' },
   ],
 
-  approach: {
-    eyebrow: 'Yang paling kami utamakan',
-    title: 'Solusi cerdas untuk masa depan yang terhubung.',
-    text: 'Kami tim profesional berpengalaman yang merancang, mengintegrasikan dan mendukung sistem otomasi serta IoT, dari asesmen pertama hingga bertahun-tahun setelah sistem berjalan.',
-    imageAlt: 'Tim insinyur Autoen mendiskusikan alur kerja IoT dan otomasi',
-    items: [
-      {
-        image: '/img/values-5.png',
-        title: 'Berfokus pada pelanggan',
-        text: 'Kualitas berawal dan berakhir pada pelanggan. Setiap sistem yang kami bangun berangkat dari kondisi operasional Anda.',
-      },
-      {
-        image: '/img/values-6.png',
-        title: 'Solusi cerdas, hasil maksimal',
-        text: 'Kami mengejar hasil terbesar dengan usaha, waktu dan biaya seminimal mungkin. Efisiensinya dirancang sejak awal.',
-      },
-      {
-        image: '/img/values-4.png',
-        title: 'Inovasi & teknologi terkini',
-        text: 'Kami memanfaatkan otomasi canggih, AI dan IoT untuk meningkatkan kecepatan, akurasi dan efisiensi operasional Anda.',
-      },
-      {
-        image: '/img/values-7.png',
-        title: 'Dukungan purnajual',
-        text: 'Dukungan kami dirancang dengan satu tujuan: kepuasan dan keberhasilan jangka panjang setiap pelanggan.',
-      },
-    ],
-  },
-
   services: {
     eyebrow: 'Produk',
     title: 'Yang bisa kami kerjakan untuk Anda.',
@@ -233,8 +204,8 @@ export const id: Dictionary = {
       },
       {
         step: '02',
-        title: 'Pendekatan kami',
-        text: 'Asesmen terstruktur mengubah masalah menjadi rancangan solusi yang jelas.',
+        title: 'Survei & perancangan',
+        text: 'Tim kami datang ke lokasi, melihat prosesnya langsung, lalu menyusun rancangan solusi bersama Anda.',
         items: ['Asesmen masalah', 'Perancangan solusi'],
       },
       {
@@ -290,7 +261,6 @@ export const id: Dictionary = {
   coreValues: {
     eyebrow: 'Nilai utama',
     title: 'Yang kami pegang di setiap proyek.',
-    text: 'Nilai-nilai ini mendorong kami menghadirkan teknologi yang membawa pertumbuhan nyata bagi klien dan mitra.',
     valuePrefix: 'Nilai',
     items: [
       { title: 'Inovasi', text: 'Teknologi baru kami pakai kalau terbukti lebih baik, bukan sekadar karena baru.' },
@@ -323,17 +293,17 @@ export const id: Dictionary = {
   footer: {
     workWithUs: {
       title: 'Bekerja sama',
-      text: 'Kami bermitra dengan manufaktur, utilitas dan pengelola kota untuk membangun sistem otomasi dan IoT yang tahan lama.',
+      text: 'Kami bekerja sama dengan pabrik, pengelola utilitas, dan pemerintah kota.',
     },
     demo: {
       title: 'Minta demo',
-      text: 'Lihat bagaimana dasbor IoT, retrofit PLC atau alur kerja RPA bekerja pada proses Anda sendiri.',
+      text: 'Lihat contoh dasbor IoT atau sistem otomasi yang sudah berjalan sebelum memutuskan.',
       topic: 'Minta demo',
     },
     navigate: 'Navigasi',
     reachUs: 'Hubungi',
     contact: 'Kontak',
     rights: 'Seluruh hak cipta dilindungi.',
-    tagline: 'Solusi otomasi & IoT untuk Industri 4.0',
+    tagline: 'Otomasi, mesin, robotik, dan IoT untuk industri',
   },
 }

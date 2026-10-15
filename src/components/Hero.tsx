@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useI18n } from '../i18n'
 import { Button } from './ui/Button'
+import { contactHref } from '../lib/inquiry'
 import { NetworkGlobe } from './NetworkGlobe'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -108,10 +109,10 @@ export function Hero() {
           transition={{ duration: 0.8, ease, delay: 0.8 }}
           className="mt-9 flex flex-wrap items-center gap-3"
         >
-          <Button href="#contact" arrow>
+          <Button to={contactHref()} arrow>
             {t.hero.primaryCta}
           </Button>
-          <Button href="#services" variant="ghost">
+          <Button to="/products" variant="ghost">
             {t.hero.secondaryCta}
           </Button>
         </motion.div>

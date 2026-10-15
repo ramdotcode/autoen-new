@@ -1,9 +1,9 @@
-import { Bot, Building2, Cpu, Network, Radio, ShieldCheck } from 'lucide-react'
+import { Bot, Building2, Cog, Cpu, MonitorCog, Radio } from 'lucide-react'
 import type { Dictionary } from './types'
 
 export const en: Dictionary = {
   meta: {
-    title: 'Autoen Industri Teknologi — Automation & IoT Solutions',
+    title: 'Autoen Industri Teknologi | Automation & IoT Solutions',
     description:
       'Autoen Industri Teknologi (AITEK) delivers industrial automation, IoT and smart-city solutions that help businesses transform for Industry 4.0.',
   },
@@ -22,30 +22,111 @@ export const en: Dictionary = {
     capabilities: 'Capabilities',
     process: 'Our process',
     coreValues: 'Core values',
+    team: 'Company structure',
+    clients: 'Companies we have worked with',
+    portfolioFilter: 'Filter projects',
   },
 
   nav: [
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Process', href: '#process' },
-    { label: 'Values', href: '#values' },
+    { label: 'Home', to: '/' },
+    { label: 'Profile', to: '/profile' },
+    { label: 'Products', to: '/products' },
+    { label: 'Portfolio', to: '/portfolio' },
   ],
   navCta: 'Contact us',
+
+  pages: {
+    home: 'Home',
+    intro: {
+      profile: {
+        title: 'Company profile',
+        text: 'Who we are, what we are working towards, and the people who do the work.',
+      },
+      products: {
+        title: 'Products & services',
+        text: 'IT consulting, machines, robotics, IoT and automation, plus how we take a project from start to finish.',
+      },
+      portfolio: {
+        title: 'Portfolio',
+        text: "Projects we've finished, projects in progress, and the companies we've worked with.",
+      },
+      contact: {
+        title: 'Contact us',
+        text: "Leave your name, contact and question. We'll reply during working hours.",
+      },
+    },
+    explore: {
+      eyebrow: 'Explore',
+      title: 'Get to know Autoen.',
+      items: [
+        { to: '/profile', title: 'Profile', text: 'Our vision, mission and team structure.' },
+        { to: '/products', title: 'Products', text: 'IT consulting, machines, robotics, IoT and more.' },
+        { to: '/portfolio', title: 'Portfolio', text: "Projects we've finished and are working on." },
+      ],
+    },
+    notFound: {
+      title: 'Page not found.',
+      text: 'The address may be mistyped, or the page has moved.',
+      back: 'Back to home',
+    },
+  },
+  menuContact: 'Office & contact',
 
   hero: {
     eyebrow: 'Automation · IoT · Smart Industry',
     titleLines: ["Let's realize", 'business transformation', 'through smart solutions.'],
     highlight: 'smart solutions.',
     subtitle:
-      'Automation, IoT and intelligent systems engineered for Indonesian industry — built by a team of experienced professionals.',
+      'Automation, IoT and intelligent systems engineered for Indonesian industry, built by a team of experienced professionals.',
     primaryCta: 'Start a project',
-    secondaryCta: 'Explore services',
+    secondaryCta: 'See products',
     scroll: 'Scroll',
   },
 
   manifesto: {
     eyebrow: 'Our vision',
-    text: 'To become a leading technology company providing intelligent solutions based on automation and IoT, supporting digital transformation and industrial sustainability in the Industry 4.0 era.',
+    text: 'We want to be the team people call first when a factory, a building or a city in Indonesia needs its systems to work smarter.',
+  },
+
+  profile: {
+    eyebrow: 'Company profile',
+    title: 'Engineers from BSD, working for Indonesian industry.',
+    paragraphs: [
+      'Autoen Industri Teknologi (AITEK) is an engineering company based in BSD, Tangerang. What we do is simple to explain: we make the machines, robots and systems where you work run cleaner, faster and break down less.',
+      "We don't sell everyone the same package. Usually we visit first, walk your production line or facility, talk to the operators, and only then put a proposal together. The people who design the system also install and test it on site.",
+    ],
+    facts: [
+      { label: 'Office', value: 'BSD Icon, Tangerang' },
+      { label: 'Focus', value: 'Automation · Machines · Robotics · IoT' },
+      { label: 'Clients', value: 'Industry & city operators' },
+    ],
+    missionTitle: 'Our mission',
+    mission: [
+      'See the problem on site with our own eyes before offering any solution.',
+      'Pick the technology that fits the need and the budget, not the most expensive one.',
+      'Keep working until the system actually runs, then teach your team how to use it.',
+      "Stay reachable after the project ends. If something goes wrong, we're the ones who show up.",
+    ],
+  },
+
+  team: {
+    eyebrow: 'Company structure',
+    title: 'The people behind every project.',
+    text: 'The team you meet in the first meeting is the same team that comes to your site later.',
+    namePending: 'Name to be confirmed',
+  },
+
+  portfolio: {
+    eyebrow: 'Portfolio',
+    title: "Projects we've finished and are working on.",
+    text: 'Some of our work for factories, utilities and cities. Want the details, or have a similar need? Just ask.',
+    filters: { all: 'All', done: 'Completed', ongoing: 'In progress' },
+    status: { done: 'Completed', ongoing: 'In progress' },
+    clientPending: 'Client name to be confirmed',
+    sample: 'Sample',
+    clientsTitle: 'Companies that have worked with us',
+    clientSlot: 'Client logo',
+    cta: 'Discuss a similar project',
   },
 
   stats: [
@@ -58,7 +139,7 @@ export const en: Dictionary = {
   approach: {
     eyebrow: 'What we value most',
     title: 'Smart solutions for a connected future.',
-    text: 'We are a team of experienced professionals who design, integrate and support automation and IoT systems — from the first assessment to years after go-live.',
+    text: 'We are a team of experienced professionals who design, integrate and support automation and IoT systems, from the first assessment to years after go-live.',
     imageAlt: 'Autoen engineers discussing an IoT and automation workflow',
     items: [
       {
@@ -69,7 +150,7 @@ export const en: Dictionary = {
       {
         image: '/img/values-6.png',
         title: 'Smart solutions, big results',
-        text: 'We focus on the most significant outcome with the least effort, time and cost — streamlined efficiency by design.',
+        text: 'We focus on the most significant outcome with the least effort, time and cost. Efficiency is designed in from the start.',
       },
       {
         image: '/img/values-4.png',
@@ -85,57 +166,58 @@ export const en: Dictionary = {
   },
 
   services: {
-    eyebrow: 'Services',
-    title: 'Everything needed to run a smarter operation.',
-    text: 'Six capabilities, one accountable partner — from sensors on the floor to the software that turns their data into decisions.',
+    eyebrow: 'Products',
+    title: 'What we can build for you.',
+    text: 'From advice across the table to machines and robots standing on your factory floor. All handled by one team.',
     items: [
       {
-        icon: Radio,
-        title: 'IoT Solutions for Industry',
-        text: 'Sensor networks, edge gateways and dashboards that turn machine data into real-time visibility across plants and assets.',
-        tags: ['Sensors', 'Edge gateway', 'Dashboards'],
+        icon: MonitorCog,
+        title: 'IT Consulting',
+        text: "We map the systems you already have, find what's slowing you down, and draw up a digitalisation plan that fits your budget.",
+        tags: ['System audit', 'Architecture', 'Roadmap'],
       },
       {
-        icon: Cpu,
-        title: 'Industrial Automation',
-        text: 'PLC, SCADA and control-system engineering that keeps production reliable, consistent and running without disruption.',
-        tags: ['PLC / SCADA', 'Control panels', 'Retrofit'],
-      },
-      {
-        icon: Building2,
-        title: 'Smart City Solutions',
-        text: 'Connected infrastructure for lighting, utilities, traffic and environmental monitoring — integrated into one operational platform.',
-        tags: ['Smart lighting', 'Utilities', 'Monitoring'],
-      },
-      {
-        icon: Network,
-        title: 'IoT Integration & Consulting',
-        text: 'From assessment to architecture, we integrate legacy equipment with modern platforms and design a roadmap that fits your budget.',
-        tags: ['Assessment', 'Architecture', 'Roadmap'],
-      },
-      {
-        icon: ShieldCheck,
-        title: 'IoT Security & Reliability',
-        text: 'Cyber-resilient system design, secure device provisioning and redundancy so your data and operations stay protected.',
-        tags: ['Hardening', 'Provisioning', 'Redundancy'],
+        icon: Cog,
+        title: 'Industrial Machines',
+        text: 'Custom machines designed and built for your process, or old machines rebuilt to run faster, safer and easier to maintain.',
+        tags: ['Custom machines', 'Retrofit', 'Control panels'],
       },
       {
         icon: Bot,
-        title: 'Machines & Robotics Services',
-        text: 'Robotic process automation, machine integration and custom software that remove repetitive work and raise throughput.',
-        tags: ['RPA', 'Machine integration', 'Custom software'],
+        title: 'Robotics',
+        text: 'Robot arms for repetitive, heavy work like pick-and-place, palletizing and welding. Plus process automation on the software side.',
+        tags: ['Robot arms', 'Palletizing', 'RPA'],
+      },
+      {
+        icon: Radio,
+        title: 'IoT',
+        text: 'Sensors, gateways and dashboards that show the state of your machines and assets live, from anywhere, with security built in.',
+        tags: ['Sensors', 'Dashboards', 'Data security'],
+      },
+      {
+        icon: Cpu,
+        title: 'PLC & SCADA Automation',
+        text: 'PLC, HMI and SCADA programming so production runs consistently and can be watched from a single control room.',
+        tags: ['PLC', 'HMI', 'SCADA'],
+      },
+      {
+        icon: Building2,
+        title: 'Smart City',
+        text: 'Street lighting, water utilities and environmental monitoring, connected and managed from one platform.',
+        tags: ['Smart lighting', 'Utilities', 'Monitoring'],
       },
     ],
     marquee: [
-      'Industrial IoT',
+      'IT Consulting',
+      'Industrial Machines',
+      'Robotics',
+      'IoT',
       'PLC & SCADA',
       'Smart City',
-      'Robotics',
-      'Edge Computing',
+      'Retrofit',
       'Predictive Maintenance',
-      'Custom Software',
-      'Cyber Resilience',
     ],
+    ask: 'Ask about this',
   },
 
   process: {
@@ -227,25 +309,22 @@ export const en: Dictionary = {
   },
 
   contact: {
-    eyebrow: 'Contact',
-    title: 'Ready to solve your challenges with Autoen?',
-    text: "Tell us about your operation. We'll come back with a first assessment and the next step.",
     hours: 'Monday – Friday, 09:00 – 17:00 WIB',
     labels: { address: 'Address', phone: 'Call us', email: 'Email us', hours: 'Open hours' },
     form: {
       name: 'Name',
       namePlaceholder: 'Your name',
-      email: 'Business email',
-      emailPlaceholder: 'you@company.com',
-      company: 'Company',
-      companyPlaceholder: 'Company or institution',
-      message: 'Message',
-      messagePlaceholder: 'What are you trying to improve?',
+      contact: 'Contact',
+      contactPlaceholder: 'WhatsApp number or email',
+      topic: 'Topic',
+      clearTopic: 'Clear topic',
+      message: 'Comment or question',
+      messagePlaceholder: 'Tell us a little about what you need',
       submit: 'Send message',
-      hint: 'Opens your email client — no data is stored on this site.',
+      hint: 'Opens your email client. No data is stored on this site.',
       sentHint: 'Your email client should open with the message prepared.',
     },
-    mailSubject: (name, company) => `Project inquiry from ${name}${company ? ` — ${company}` : ''}`,
+    mailSubject: (name, topic) => `Message from ${name}${topic ? ` (${topic})` : ''}`,
   },
 
   footer: {
@@ -256,6 +335,7 @@ export const en: Dictionary = {
     demo: {
       title: 'Request a demo',
       text: 'See how an IoT dashboard, PLC retrofit or RPA workflow would look on your own process.',
+      topic: 'Demo request',
     },
     navigate: 'Navigate',
     reachUs: 'Reach us',

@@ -1,9 +1,9 @@
-import { Bot, Building2, Cpu, Network, Radio, ShieldCheck } from 'lucide-react'
+import { Bot, Building2, Cog, Cpu, MonitorCog, Radio } from 'lucide-react'
 import type { Dictionary } from './types'
 
 export const id: Dictionary = {
   meta: {
-    title: 'Autoen Industri Teknologi — Solusi Otomasi & IoT',
+    title: 'Autoen Industri Teknologi | Solusi Otomasi & IoT',
     description:
       'Autoen Industri Teknologi (AITEK) menghadirkan solusi otomasi industri, IoT dan smart city untuk mendukung transformasi bisnis di era Industri 4.0.',
   },
@@ -22,30 +22,111 @@ export const id: Dictionary = {
     capabilities: 'Kemampuan',
     process: 'Proses kami',
     coreValues: 'Nilai utama',
+    team: 'Struktur perusahaan',
+    clients: 'Perusahaan yang sudah bekerja sama',
+    portfolioFilter: 'Saring proyek',
   },
 
   nav: [
-    { label: 'Tentang', href: '#about' },
-    { label: 'Layanan', href: '#services' },
-    { label: 'Proses', href: '#process' },
-    { label: 'Nilai', href: '#values' },
+    { label: 'Beranda', to: '/' },
+    { label: 'Profil', to: '/profile' },
+    { label: 'Produk', to: '/products' },
+    { label: 'Portfolio', to: '/portfolio' },
   ],
   navCta: 'Hubungi kami',
+
+  pages: {
+    home: 'Beranda',
+    intro: {
+      profile: {
+        title: 'Profil perusahaan',
+        text: 'Siapa kami, apa yang kami kejar, dan orang-orang yang mengerjakannya.',
+      },
+      products: {
+        title: 'Produk & layanan',
+        text: 'Konsultan IT, mesin, robotik, IoT, dan otomasi, plus cara kami mengerjakannya dari awal sampai selesai.',
+      },
+      portfolio: {
+        title: 'Portfolio',
+        text: 'Proyek yang sudah selesai, yang sedang berjalan, dan perusahaan yang pernah bekerja sama dengan kami.',
+      },
+      contact: {
+        title: 'Hubungi kami',
+        text: 'Isi nama, kontak, dan pertanyaan Anda. Kami akan membalas di jam kerja.',
+      },
+    },
+    explore: {
+      eyebrow: 'Jelajahi',
+      title: 'Kenali Autoen lebih dekat.',
+      items: [
+        { to: '/profile', title: 'Profil', text: 'Visi, misi, dan struktur tim kami.' },
+        { to: '/products', title: 'Produk', text: 'Konsultan IT, mesin, robotik, IoT, dan lainnya.' },
+        { to: '/portfolio', title: 'Portfolio', text: 'Proyek yang sudah dan sedang kami kerjakan.' },
+      ],
+    },
+    notFound: {
+      title: 'Halaman tidak ditemukan.',
+      text: 'Alamat yang Anda buka mungkin salah ketik atau halamannya sudah dipindah.',
+      back: 'Kembali ke beranda',
+    },
+  },
+  menuContact: 'Kantor & kontak',
 
   hero: {
     eyebrow: 'Otomasi · IoT · Industri Cerdas',
     titleLines: ['Mari wujudkan', 'transformasi bisnis', 'lewat solusi cerdas.'],
     highlight: 'solusi cerdas.',
     subtitle:
-      'Otomasi, IoT dan sistem cerdas yang dirancang untuk industri Indonesia — dikerjakan oleh tim profesional berpengalaman.',
+      'Otomasi, IoT dan sistem cerdas yang dirancang untuk industri Indonesia, dikerjakan oleh tim profesional berpengalaman.',
     primaryCta: 'Mulai proyek',
-    secondaryCta: 'Lihat layanan',
+    secondaryCta: 'Lihat produk',
     scroll: 'Gulir',
   },
 
   manifesto: {
     eyebrow: 'Visi kami',
-    text: 'Menjadi perusahaan teknologi terdepan yang menghadirkan solusi cerdas berbasis otomasi dan IoT, mendukung transformasi digital serta keberlanjutan industri di era Industri 4.0.',
+    text: 'Kami ingin jadi tim yang pertama kali dicari ketika pabrik, gedung, atau kota di Indonesia butuh sistemnya bekerja lebih pintar.',
+  },
+
+  profile: {
+    eyebrow: 'Profil perusahaan',
+    title: 'Orang teknik, dari BSD, untuk industri Indonesia.',
+    paragraphs: [
+      'Autoen Industri Teknologi (AITEK) adalah perusahaan teknik yang berkantor di BSD, Tangerang. Pekerjaan kami sederhana untuk dijelaskan: membuat mesin, robot, dan sistem di tempat Anda bekerja lebih rapi, lebih cepat, dan lebih jarang rusak.',
+      'Kami tidak menjual paket yang sama ke semua orang. Biasanya kami datang dulu, melihat lini produksi atau fasilitas Anda, ngobrol dengan operatornya, baru kemudian menyusun usulan. Yang merancang sistemnya juga ikut memasang dan mengetesnya di lokasi.',
+    ],
+    facts: [
+      { label: 'Kantor', value: 'BSD Icon, Tangerang' },
+      { label: 'Bidang', value: 'Otomasi · Mesin · Robotik · IoT' },
+      { label: 'Klien', value: 'Industri & pengelola kota' },
+    ],
+    missionTitle: 'Misi kami',
+    mission: [
+      'Melihat langsung masalahnya di lapangan sebelum menawarkan solusi apa pun.',
+      'Memilih teknologi yang pas dengan kebutuhan dan anggaran, bukan yang paling mahal.',
+      'Mengerjakan sampai sistemnya benar-benar jalan, lalu mengajari tim Anda cara memakainya.',
+      'Tetap bisa dihubungi setelah proyek selesai. Kalau ada yang bermasalah, kami yang datang.',
+    ],
+  },
+
+  team: {
+    eyebrow: 'Struktur perusahaan',
+    title: 'Orang-orang di balik setiap proyek.',
+    text: 'Tim yang Anda temui di rapat pertama adalah tim yang sama yang nanti turun ke lokasi.',
+    namePending: 'Nama menyusul',
+  },
+
+  portfolio: {
+    eyebrow: 'Portfolio',
+    title: 'Proyek yang sudah dan sedang kami kerjakan.',
+    text: 'Sebagian pekerjaan kami untuk pabrik, utilitas, dan kota. Ingin tahu detailnya atau punya kebutuhan serupa? Tinggal tanya.',
+    filters: { all: 'Semua', done: 'Selesai', ongoing: 'Sedang dikerjakan' },
+    status: { done: 'Selesai', ongoing: 'Berjalan' },
+    clientPending: 'Nama klien menyusul',
+    sample: 'Contoh',
+    clientsTitle: 'Perusahaan yang sudah bekerja sama dengan kami',
+    clientSlot: 'Logo klien',
+    cta: 'Diskusikan proyek serupa',
   },
 
   stats: [
@@ -58,7 +139,7 @@ export const id: Dictionary = {
   approach: {
     eyebrow: 'Yang paling kami utamakan',
     title: 'Solusi cerdas untuk masa depan yang terhubung.',
-    text: 'Kami tim profesional berpengalaman yang merancang, mengintegrasikan dan mendukung sistem otomasi serta IoT — dari asesmen pertama hingga bertahun-tahun setelah sistem berjalan.',
+    text: 'Kami tim profesional berpengalaman yang merancang, mengintegrasikan dan mendukung sistem otomasi serta IoT, dari asesmen pertama hingga bertahun-tahun setelah sistem berjalan.',
     imageAlt: 'Tim insinyur Autoen mendiskusikan alur kerja IoT dan otomasi',
     items: [
       {
@@ -69,7 +150,7 @@ export const id: Dictionary = {
       {
         image: '/img/values-6.png',
         title: 'Solusi cerdas, hasil maksimal',
-        text: 'Kami mengejar hasil terbesar dengan usaha, waktu dan biaya seminimal mungkin — efisiensi yang dirancang sejak awal.',
+        text: 'Kami mengejar hasil terbesar dengan usaha, waktu dan biaya seminimal mungkin. Efisiensinya dirancang sejak awal.',
       },
       {
         image: '/img/values-4.png',
@@ -85,57 +166,58 @@ export const id: Dictionary = {
   },
 
   services: {
-    eyebrow: 'Layanan',
-    title: 'Semua yang dibutuhkan untuk operasi yang lebih cerdas.',
-    text: 'Enam kemampuan, satu mitra yang bertanggung jawab penuh — dari sensor di lantai produksi sampai perangkat lunak yang mengubah datanya menjadi keputusan.',
+    eyebrow: 'Produk',
+    title: 'Yang bisa kami kerjakan untuk Anda.',
+    text: 'Dari konsultasi di atas meja sampai mesin dan robot yang berdiri di lantai pabrik. Semuanya ditangani satu tim.',
     items: [
       {
-        icon: Radio,
-        title: 'Solusi IoT untuk Industri',
-        text: 'Jaringan sensor, edge gateway dan dasbor yang mengubah data mesin menjadi visibilitas real-time di seluruh pabrik dan aset.',
-        tags: ['Sensor', 'Edge gateway', 'Dasbor'],
+        icon: MonitorCog,
+        title: 'Konsultan IT',
+        text: 'Kami bantu petakan sistem yang sudah ada, cari mana yang bikin lambat, lalu susun rencana digitalisasi yang masuk akal untuk anggaran Anda.',
+        tags: ['Audit sistem', 'Arsitektur', 'Peta jalan'],
       },
       {
-        icon: Cpu,
-        title: 'Otomasi Industri',
-        text: 'Rekayasa PLC, SCADA dan sistem kontrol yang menjaga produksi tetap andal, konsisten dan berjalan tanpa gangguan.',
-        tags: ['PLC / SCADA', 'Panel kontrol', 'Retrofit'],
-      },
-      {
-        icon: Building2,
-        title: 'Solusi Smart City',
-        text: 'Infrastruktur terhubung untuk penerangan, utilitas, lalu lintas dan pemantauan lingkungan — terintegrasi dalam satu platform operasional.',
-        tags: ['Penerangan pintar', 'Utilitas', 'Pemantauan'],
-      },
-      {
-        icon: Network,
-        title: 'Integrasi & Konsultasi IoT',
-        text: 'Dari asesmen hingga arsitektur, kami mengintegrasikan perangkat lama dengan platform modern dan menyusun peta jalan sesuai anggaran Anda.',
-        tags: ['Asesmen', 'Arsitektur', 'Peta jalan'],
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Keamanan & Keandalan IoT',
-        text: 'Desain sistem tahan serangan siber, provisioning perangkat yang aman dan redundansi agar data serta operasi Anda tetap terlindungi.',
-        tags: ['Hardening', 'Provisioning', 'Redundansi'],
+        icon: Cog,
+        title: 'Mesin Industri',
+        text: 'Desain dan pembuatan mesin khusus, atau peremajaan mesin lama supaya lebih cepat, lebih aman, dan lebih mudah dirawat.',
+        tags: ['Mesin khusus', 'Retrofit', 'Panel kontrol'],
       },
       {
         icon: Bot,
-        title: 'Layanan Mesin & Robotika',
-        text: 'Robotic process automation, integrasi mesin dan perangkat lunak khusus yang memangkas pekerjaan berulang dan menaikkan output.',
-        tags: ['RPA', 'Integrasi mesin', 'Perangkat lunak khusus'],
+        title: 'Robotik',
+        text: 'Lengan robot untuk pekerjaan yang berulang dan berat, seperti ambil-taruh, palletizing, dan pengelasan. Ada juga otomasi proses di sisi perangkat lunak.',
+        tags: ['Robot lengan', 'Palletizing', 'RPA'],
+      },
+      {
+        icon: Radio,
+        title: 'IoT',
+        text: 'Sensor, gateway, dan dasbor yang menunjukkan kondisi mesin dan aset Anda secara langsung, dari mana saja, dengan keamanan yang dijaga.',
+        tags: ['Sensor', 'Dasbor', 'Keamanan data'],
+      },
+      {
+        icon: Cpu,
+        title: 'Otomasi PLC & SCADA',
+        text: 'Pemrograman PLC, HMI, dan SCADA supaya produksi berjalan konsisten dan bisa dipantau dari satu ruang kontrol.',
+        tags: ['PLC', 'HMI', 'SCADA'],
+      },
+      {
+        icon: Building2,
+        title: 'Smart City',
+        text: 'Penerangan jalan, utilitas air, dan pemantauan lingkungan yang terhubung dan bisa dikelola dari satu platform.',
+        tags: ['Penerangan pintar', 'Utilitas', 'Pemantauan'],
       },
     ],
     marquee: [
-      'IoT Industri',
+      'Konsultan IT',
+      'Mesin Industri',
+      'Robotik',
+      'IoT',
       'PLC & SCADA',
       'Smart City',
-      'Robotika',
-      'Edge Computing',
+      'Retrofit',
       'Predictive Maintenance',
-      'Perangkat Lunak Khusus',
-      'Ketahanan Siber',
     ],
+    ask: 'Tanya produk ini',
   },
 
   process: {
@@ -227,25 +309,22 @@ export const id: Dictionary = {
   },
 
   contact: {
-    eyebrow: 'Kontak',
-    title: 'Siap menyelesaikan tantangan Anda bersama Autoen?',
-    text: 'Ceritakan kondisi operasional Anda. Kami akan kembali dengan asesmen awal dan langkah berikutnya.',
     hours: 'Senin – Jumat, 09.00 – 17.00 WIB',
     labels: { address: 'Alamat', phone: 'Telepon', email: 'Email', hours: 'Jam operasional' },
     form: {
       name: 'Nama',
       namePlaceholder: 'Nama Anda',
-      email: 'Email bisnis',
-      emailPlaceholder: 'anda@perusahaan.com',
-      company: 'Perusahaan',
-      companyPlaceholder: 'Perusahaan atau instansi',
-      message: 'Pesan',
-      messagePlaceholder: 'Apa yang ingin Anda tingkatkan?',
+      contact: 'Kontak',
+      contactPlaceholder: 'No. WhatsApp atau email',
+      topic: 'Topik',
+      clearTopic: 'Hapus topik',
+      message: 'Komentar atau pertanyaan',
+      messagePlaceholder: 'Ceritakan sedikit kebutuhan Anda',
       submit: 'Kirim pesan',
-      hint: 'Membuka aplikasi email Anda — tidak ada data yang disimpan di situs ini.',
+      hint: 'Membuka aplikasi email Anda. Tidak ada data yang disimpan di situs ini.',
       sentHint: 'Aplikasi email Anda akan terbuka dengan pesan yang sudah disiapkan.',
     },
-    mailSubject: (name, company) => `Permintaan proyek dari ${name}${company ? ` — ${company}` : ''}`,
+    mailSubject: (name, topic) => `Pesan dari ${name}${topic ? ` (${topic})` : ''}`,
   },
 
   footer: {
@@ -256,6 +335,7 @@ export const id: Dictionary = {
     demo: {
       title: 'Minta demo',
       text: 'Lihat bagaimana dasbor IoT, retrofit PLC atau alur kerja RPA bekerja pada proses Anda sendiri.',
+      topic: 'Minta demo',
     },
     navigate: 'Navigasi',
     reachUs: 'Hubungi',

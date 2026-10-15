@@ -1,6 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import { company } from '../data/content'
 import { useI18n } from '../i18n'
+import { Link } from 'react-router'
+import { contactHref } from '../lib/inquiry'
 import { Reveal } from './ui/Reveal'
 
 export function Footer() {
@@ -12,8 +14,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 md:py-20">
         <div className="grid gap-8 md:grid-cols-2">
           <Reveal>
-            <a
-              href="#contact"
+            <Link
+              to={contactHref()}
               className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-line-strong hover:bg-surface-2 md:p-9"
             >
               <div className="flex items-start justify-between">
@@ -21,11 +23,11 @@ export function Footer() {
                 <ArrowUpRight size={20} className="text-dim transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" aria-hidden />
               </div>
               <p className="mt-6 text-sm leading-relaxed text-muted">{t.footer.workWithUs.text}</p>
-            </a>
+            </Link>
           </Reveal>
           <Reveal delay={0.08}>
-            <a
-              href="#services"
+            <Link
+              to={contactHref(t.footer.demo.topic)}
               className="group flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-line-strong hover:bg-surface-2 md:p-9"
             >
               <div className="flex items-start justify-between">
@@ -33,16 +35,16 @@ export function Footer() {
                 <ArrowUpRight size={20} className="text-dim transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" aria-hidden />
               </div>
               <p className="mt-6 text-sm leading-relaxed text-muted">{t.footer.demo.text}</p>
-            </a>
+            </Link>
           </Reveal>
         </div>
 
         <div className="mt-16 flex flex-col gap-10 border-t border-line pt-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <a href="#top" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <img src="/img/logo.png" alt="" width={32} height={32} className="h-8 w-8 rounded-md object-contain" />
               <span className="text-sm font-medium text-fg">{company.name}</span>
-            </a>
+            </Link>
             <p className="mt-5 text-sm leading-relaxed text-muted">
               {company.address.map((l) => (
                 <span key={l} className="block">
@@ -57,16 +59,16 @@ export function Footer() {
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.footer.navigate}</p>
               <ul className="mt-4 space-y-2.5">
                 {t.nav.map((n) => (
-                  <li key={n.href}>
-                    <a href={n.href} className="text-sm text-muted transition-colors hover:text-fg">
+                  <li key={n.to}>
+                    <Link to={n.to} className="text-sm text-muted transition-colors hover:text-fg">
                       {n.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li>
-                  <a href="#contact" className="text-sm text-muted transition-colors hover:text-fg">
+                  <Link to={contactHref()} className="text-sm text-muted transition-colors hover:text-fg">
                     {t.footer.contact}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

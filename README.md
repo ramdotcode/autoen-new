@@ -38,14 +38,39 @@ src/
   data/content.ts        language-independent company data (address, phone, email)
   lib/motion.ts          shared variants / easing
   components/
-    Navbar, Hero (+ NetworkGlobe canvas), Manifesto (scroll word reveal),
-    Stats (count-up), Approach, Services (+ marquee), Process (timeline),
-    WhyUs, CoreValues (tabs), Contact, Footer
-    ui/  Button, Reveal, SectionHeading, LanguageToggle
+    Navbar (+ identity strip), Hero (+ NetworkGlobe canvas), Manifesto (vision,
+    scroll word reveal), Profile (profile + mission), Team (org chart), Stats
+    (count-up), Services (products + marquee), Portfolio (filterable projects +
+    client logos), Process (timeline), Approach, WhyUs, CoreValues (tabs),
+    Contact, Footer
+    ui/  Button, Reveal, SectionHeading, LanguageToggle, Identity
+  data/team.ts           company structure (names, roles, photos)
+  data/portfolio.ts      projects and client logos
+  lib/inquiry.ts         contactHref(): every CTA links to /contact, optionally with a topic
+  lib/usePageMeta.ts     per-page tab title
+  pages/                 Home, ProfilePage, ProductsPage, PortfolioPage, ContactPage, NotFound
 public/img/              logo, favicon and illustrations from the previous site
 ```
 
+## Pages
+React Router (`src/App.tsx`), one file per page in `src/pages/`:
+
+| Path         | Page           | Sections                                        |
+|--------------|----------------|-------------------------------------------------|
+| `/`          | Home           | Hero, vision, stats, explore links, approach, why us |
+| `/profile`   | Profile        | Profile + mission, team structure, core values  |
+| `/products`  | Products       | Product cards, process timeline                 |
+| `/portfolio` | Portfolio      | Filterable projects, client logos               |
+| `/contact`   | Contact        | Contact details + form (`?topic=` pre-fills a topic) |
+| anything else| 404            |                                                 |
+
+Every CTA links to `/contact` via `contactHref()` in `src/lib/inquiry.ts`.
+`vercel.json` rewrites all paths to `index.html`, so direct links work.
+
 ## Editing content
+Data that is still a placeholder (team names, projects, client logos, draft
+vision/mission) is tracked in `CATATAN.md`.
+
 The site is bilingual (English / Bahasa Indonesia). Every visible string lives in
 `src/i18n/en.ts` and `src/i18n/id.ts` — edit a service, a step or a heading there
 and the matching section updates. Both files are typed against `Dictionary` in

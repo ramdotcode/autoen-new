@@ -19,10 +19,21 @@ export type Dictionary = {
     capabilities: string
     process: string
     coreValues: string
+    team: string
+    clients: string
+    portfolioFilter: string
   }
 
-  nav: { label: string; href: string }[]
+  nav: { label: string; to: string }[]
   navCta: string
+
+  pages: {
+    home: string
+    intro: Record<'profile' | 'products' | 'portfolio' | 'contact', { title: string; text: string }>
+    explore: { eyebrow: string; title: string; items: { to: string; title: string; text: string }[] }
+    notFound: { title: string; text: string; back: string }
+  }
+  menuContact: string
 
   hero: {
     eyebrow: string
@@ -35,6 +46,35 @@ export type Dictionary = {
   }
 
   manifesto: { eyebrow: string; text: string }
+
+  profile: {
+    eyebrow: string
+    title: string
+    paragraphs: string[]
+    facts: { label: string; value: string }[]
+    missionTitle: string
+    mission: string[]
+  }
+
+  team: {
+    eyebrow: string
+    title: string
+    text: string
+    namePending: string
+  }
+
+  portfolio: {
+    eyebrow: string
+    title: string
+    text: string
+    filters: { all: string; done: string; ongoing: string }
+    status: { done: string; ongoing: string }
+    clientPending: string
+    sample: string
+    clientsTitle: string
+    clientSlot: string
+    cta: string
+  }
 
   stats: { value: number; suffix: string; label: string }[]
 
@@ -52,6 +92,7 @@ export type Dictionary = {
     text: string
     items: { icon: LucideIcon; title: string; text: string; tags: string[] }[]
     marquee: string[]
+    ask: string
   }
 
   process: {
@@ -77,30 +118,27 @@ export type Dictionary = {
   }
 
   contact: {
-    eyebrow: string
-    title: string
-    text: string
     hours: string
     labels: { address: string; phone: string; email: string; hours: string }
     form: {
       name: string
       namePlaceholder: string
-      email: string
-      emailPlaceholder: string
-      company: string
-      companyPlaceholder: string
+      contact: string
+      contactPlaceholder: string
+      topic: string
+      clearTopic: string
       message: string
       messagePlaceholder: string
       submit: string
       hint: string
       sentHint: string
     }
-    mailSubject: (name: string, company: string) => string
+    mailSubject: (name: string, topic: string) => string
   }
 
   footer: {
     workWithUs: { title: string; text: string }
-    demo: { title: string; text: string }
+    demo: { title: string; text: string; topic: string }
     navigate: string
     reachUs: string
     contact: string

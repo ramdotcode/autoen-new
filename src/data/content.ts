@@ -10,7 +10,10 @@ export const company = {
     'Sampora, Cisauk, Kabupaten Tangerang 15345',
     'Indonesia',
   ],
-  phone: '+62 819-9973-7800',
-  phoneHref: 'tel:+6281999737800',
+  phone: '+62 817-9999-390',
+  phoneHref: 'tel:+628179999390',
   emails: ['admin@autoen.id', 'support@autoen.id'],
 }
+
+/** A string that has an English and an Indonesian version. */
+export type Localized = { en: string; id: string }

@@ -1,29 +1,44 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, Phone, X } from 'lucide-react'
 import { company } from '../data/content'
 import { useI18n } from '../i18n'
-import { SectionHeading } from './ui/SectionHeading'
+import { useLocation, useSearchParams } from 'react-router'
 import { Button } from './ui/Button'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
 
 const inputCls =
   'w-full rounded-lg border border-line bg-surface-2 px-4 py-3 text-sm text-fg placeholder:text-dim transition-colors focus:border-accent-soft focus:outline-none'
 
+/** Contact details and form. Lives on /contact, below the page intro. */
 export function Contact() {
   const reduce = useReducedMotion()
   const { t } = useI18n()
   const [sent, setSent] = useState(false)
+  const [params, setParams] = useSearchParams()
+  const topic = params.get('topic') ?? ''
+  const clearTopic = () => setParams({}, { replace: true })
+  const nameRef = useRef<HTMLInputElement>(null)
+  const location = useLocation()
+
+  // Arriving from a CTA inside the site (not a fresh page load): put the cursor
+  // in the first field once the page transition has finished.
+  useEffect(() => {
+    if (location.key === 'default') return
+    const timer = window.setTimeout(() => nameRef.current?.focus({ preventScroll: true }), 450)
+    return () => window.clearTimeout(timer)
+  }, [location.key])
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     const name = String(data.get('name') ?? '')
-    const email = String(data.get('email') ?? '')
-    const companyName = String(data.get('company') ?? '')
+    const contact = String(data.get('contact') ?? '')
     const message = String(data.get('message') ?? '')
-    const subject = encodeURIComponent(t.contact.mailSubject(name, companyName))
-    const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}\n${companyName}`)
+    const subject = encodeURIComponent(t.contact.mailSubject(name, topic))
+    const lines = [message, '', '--', name, contact]
+    if (topic) lines.push(`${t.contact.form.topic}: ${topic}`)
+    const body = encodeURIComponent(lines.join('\n'))
     window.location.href = `mailto:${company.emails[0]}?subject=${subject}&body=${body}`
     setSent(true)
   }
@@ -36,15 +51,13 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-bg py-24 md:py-32">
+    <section id="contact" className="relative overflow-hidden bg-bg pt-10 pb-24 md:pt-14 md:pb-32">
       <div
         className="absolute left-1/2 top-0 h-[400px] w-[900px] -translate-x-1/2 rounded-full bg-accent/10 blur-[140px]"
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-6 md:px-8">
-        <SectionHeading eyebrow={t.contact.eyebrow} title={t.contact.title} text={t.contact.text} />
-
-        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <motion.ul
             variants={reduce ? undefined : stagger(0.05, 0.08)}
             initial={reduce ? undefined : 'hidden'}
@@ -86,20 +99,37 @@ export function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="rounded-2xl border border-line bg-surface p-6 md:p-8 lg:col-span-7"
+            className="order-first rounded-2xl border border-line bg-surface p-6 md:p-8 lg:order-none lg:col-span-7"
           >
+            {topic && (
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.topic}</span>
+                <motion.span
+                  key={topic}
+                  initial={reduce ? false : { opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 py-1 pl-3 pr-1 text-sm text-accent-soft"
+                >
+                  {topic}
+                  <button
+                    type="button"
+                    onClick={clearTopic}
+                    className="flex h-6 w-6 items-center justify-center rounded-full text-accent-soft transition-colors hover:bg-white/10 hover:text-fg"
+                    aria-label={t.contact.form.clearTopic}
+                  >
+                    <X size={12} aria-hidden />
+                  </button>
+                </motion.span>
+              </div>
+            )}
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="block">
                 <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.name}</span>
-                <input name="name" required autoComplete="name" className={inputCls} placeholder={t.contact.form.namePlaceholder} />
+                <input ref={nameRef} name="name" required autoComplete="name" className={inputCls} placeholder={t.contact.form.namePlaceholder} />
               </label>
               <label className="block">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.email}</span>
-                <input name="email" type="email" required autoComplete="email" className={inputCls} placeholder={t.contact.form.emailPlaceholder} />
-              </label>
-              <label className="block sm:col-span-2">
-                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.company}</span>
-                <input name="company" autoComplete="organization" className={inputCls} placeholder={t.contact.form.companyPlaceholder} />
+                <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.contact}</span>
+                <input name="contact" required autoComplete="on" className={inputCls} placeholder={t.contact.form.contactPlaceholder} />
               </label>
               <label className="block sm:col-span-2">
                 <span className="mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.message}</span>

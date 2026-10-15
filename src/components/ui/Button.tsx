@@ -1,8 +1,14 @@
 import { motion, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router'
+
+const MotionLink = motion.create(Link)
 
 type Props = {
+  /** In-site route (client-side navigation). */
+  to?: string
+  /** External or protocol link (tel:, mailto:, #hash). */
   href?: string
   children: ReactNode
   variant?: 'primary' | 'ghost'
@@ -13,6 +19,7 @@ type Props = {
 }
 
 export function Button({
+  to,
   href,
   children,
   variant = 'primary',
@@ -44,6 +51,13 @@ export function Button({
   const hover = reduce ? undefined : { y: -2 }
   const tap = reduce ? undefined : { scale: 0.98 }
 
+  if (to) {
+    return (
+      <MotionLink to={to} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>
+        {content}
+      </MotionLink>
+    )
+  }
   if (href) {
     return (
       <motion.a href={href} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>

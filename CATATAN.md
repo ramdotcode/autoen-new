@@ -39,15 +39,17 @@ Proyek-proyek contoh sudah dihapus. Link lama `/portfolio` otomatis diarahkan
 ke bagian klien di halaman Profil.
 
 - [x] **Mayora**: logo putih dari situs resminya (mayora.com/img/mayora_logo_white.svg).
-- [x] **PT Indolakto**: situs resminya (indomilk.com) cuma memakai logo merek
-      Indomilk, jadi yang dipasang logo Indomilk yang diubah jadi putih.
+- [x] **PT Indolakto**: logo "PT. INDOLAKTO" dari owner, diubah jadi putih
+      transparan. File aslinya kecil (447 px), jadi kalau ada versi lebih besar
+      atau SVG, sebaiknya diganti.
+- [x] **ABB**: ABB_logo.svg dari Wikimedia Commons, warnanya diubah jadi putih.
 - [ ] Kalau owner punya file logo resmi dari klien, sebaiknya pakai yang itu.
 - [ ] Logo klien lain → taruh di `public/img/clients/`, lalu tambahkan di `clients.ts`.
       Pakai versi putih/terang supaya kelihatan di latar gelap.
 - [ ] Logo klien di situs lama (`../Autoen/assets/img/clients`) itu bawaan
       template, bukan klien asli.
-- [ ] Poin "Dipercaya perusahaan besar" di Beranda menyebut Mayora dan Indolakto.
-      Ubah juga kalau daftar klien berubah.
+- [ ] Poin "Dipercaya perusahaan besar" di Beranda menyebut Mayora dan Indolakto
+      (ABB belum disebut). Ubah juga kalau daftar klien berubah.
 
 ## 4. Produk
 File: `src/i18n/id.ts` dan `en.ts` → `services`

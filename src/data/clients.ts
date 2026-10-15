@@ -6,7 +6,8 @@
 export const clients: { name: string; logo: string }[] = [
   // white logo from mayora.com
   { name: 'Mayora', logo: '/img/clients/mayora.svg' },
-  // PT Indolakto has no corporate mark on its site (indomilk.com); this is its
-  // Indomilk logo recoloured white
+  // supplied by the user, recoloured white with a transparent background
   { name: 'PT Indolakto', logo: '/img/clients/indolakto.png' },
+  // ABB_logo.svg from Wikimedia Commons, fill changed to white
+  { name: 'ABB', logo: '/img/clients/abb.svg' },
 ]

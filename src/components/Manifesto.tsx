@@ -20,11 +20,15 @@ function Word({
   )
 }
 
+const REVEAL_END = 0.85
+
 export function Manifesto() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const { t } = useI18n()
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.55'] })
+  // Progress runs from the section reaching mid-screen until the sticky block is
+  // about to scroll away, so the sentence is complete while it is still pinned.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.5', 'end end'] })
   const words = t.manifesto.text.split(' ')
 
   return (
@@ -39,8 +43,11 @@ export function Manifesto() {
           ) : (
             <p className="max-w-5xl text-2xl font-medium leading-[1.25] tracking-[-0.02em] sm:text-3xl md:text-[2.75rem] md:leading-[1.2] lg:text-[3.25rem]">
               {words.map((w, i) => {
-                const start = i / words.length
-                const end = start + 1 / words.length
+                // The last word lights up at 85%; the rest of the runway holds the
+                // finished sentence on screen before the page moves on.
+                const step = REVEAL_END / words.length
+                const start = i * step
+                const end = start + step
                 return <Word key={`${w}-${i}`} word={w} progress={scrollYProgress} range={[start, end]} />
               })}
             </p>

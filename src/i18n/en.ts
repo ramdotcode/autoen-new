@@ -236,7 +236,12 @@ export const en: Dictionary = {
   whyUs: {
     eyebrow: 'Why Autoen',
     title: 'Why clients choose Autoen.',
-    imageAlt: 'Illustration of secure, connected industrial systems',
+    cycle: {
+      label: "Autoen's work cycle: survey, design, install, support, handled by one team.",
+      center: 'One team',
+      caption: 'from survey to ongoing support',
+      steps: ['Survey', 'Design', 'Install', 'Support'],
+    },
     items: [
       {
         title: 'One team from start to finish.',

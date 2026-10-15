@@ -97,7 +97,7 @@ export type Dictionary = {
   whyUs: {
     eyebrow: string
     title: string
-    imageAlt: string
+    cycle: { label: string; center: string; caption: string; steps: string[] }
     items: { title: string; text: string }[]
   }
 

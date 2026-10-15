@@ -49,7 +49,7 @@ src/
   lib/inquiry.ts         contactHref(): every CTA links to /contact, optionally with a topic
   lib/usePageMeta.ts     per-page tab title
   pages/                 Home, ProfilePage, ProductsPage, PortfolioPage, ContactPage, NotFound
-public/img/              logo, favicon and illustrations from the previous site
+public/img/              logo and favicon (no stock illustrations; visuals are drawn in code)
 ```
 
 ## Pages

@@ -236,7 +236,12 @@ export const id: Dictionary = {
   whyUs: {
     eyebrow: 'Kenapa Autoen',
     title: 'Kenapa klien memilih Autoen.',
-    imageAlt: 'Ilustrasi sistem industri yang terhubung dan aman',
+    cycle: {
+      label: 'Siklus kerja Autoen: survei, rancang, pasang, dampingi, dikerjakan satu tim.',
+      center: 'Satu tim',
+      caption: 'dari survei sampai pendampingan',
+      steps: ['Survei', 'Rancang', 'Pasang', 'Dampingi'],
+    },
     items: [
       {
         title: 'Satu tim dari awal sampai akhir.',

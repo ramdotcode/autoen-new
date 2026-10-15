@@ -36,7 +36,7 @@ export default function App() {
         {t.skipToContent}
       </a>
       <Navbar />
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
           id="main"

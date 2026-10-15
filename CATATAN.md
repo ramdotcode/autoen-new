@@ -52,7 +52,9 @@ File: `src/i18n/id.ts` dan `en.ts` → `services`
 ## 5. Identitas
 File: `src/data/content.ts`
 
-- [ ] Alamat dan email diambil dari situs lama, pastikan masih berlaku.
+- [x] Alamat: Jl. KH. Muchtar Tabrani No. 53, Bekasi Utara (dikonfirmasi 2026-10-15).
+      Kode pos belum ada, bisa ditambahkan di `content.ts`.
+- [ ] Email diambil dari situs lama, pastikan masih berlaku.
 - [x] Nomor HP: +62 817-9999-390 (dikonfirmasi 2026-10-15).
 - [ ] Nomor +62 817-9999-390 ini WhatsApp atau bukan? Kalau iya, form kontak
       bisa ditambah tombol "Kirim via WhatsApp".
@@ -158,7 +160,7 @@ Judulnya dipecah jadi 3 baris. Bagian yang **ditebalkan** dapat warna gradasi.
 - **C.** Pabrik Anda bisa / bekerja lebih pintar. / **Kami bantu dari nol.**
 
 ### Sub hero (`hero.subtitle`)
-- **A.** Kami merancang dan memasang otomasi, robot, dan IoT untuk pabrik dan kota di Indonesia. Kantornya di BSD, Tangerang.
+- **A.** Kami merancang dan memasang otomasi, robot, dan IoT untuk pabrik dan kota di Indonesia. Kantornya di Bekasi Utara.
 - **B.** Satu tim untuk urusan otomasi, robot, dan IoT di tempat Anda. Kami datang ke lokasi, mengerjakan sampai jalan, dan tetap bisa dihubungi setelahnya.
 
 ### Kenapa Autoen (`whyUs`)

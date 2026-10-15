@@ -6,8 +6,8 @@ export const company = {
   name: 'Autoen Industri Teknologi',
   short: 'AITEK',
   address: [
-    'Jl. Broadway Horizon Blok M1 No. 11, BSD Icon',
-    'Sampora, Cisauk, Kabupaten Tangerang 15345',
+    'Jl. KH. Muchtar Tabrani No. 53',
+    'Bekasi Utara, Kota Bekasi, Jawa Barat',
     'Indonesia',
   ],
   phone: '+62 817-9999-390',

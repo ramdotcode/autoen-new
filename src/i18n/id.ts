@@ -90,13 +90,13 @@ export const id: Dictionary = {
 
   profile: {
     eyebrow: 'Profil perusahaan',
-    title: 'Orang teknik, dari BSD, untuk industri Indonesia.',
+    title: 'Orang teknik, dari Bekasi, untuk industri Indonesia.',
     paragraphs: [
-      'Autoen Industri Teknologi (AITEK) adalah perusahaan teknik yang berkantor di BSD, Tangerang. Pekerjaan kami sederhana untuk dijelaskan: membuat mesin, robot, dan sistem di tempat Anda bekerja lebih rapi, lebih cepat, dan lebih jarang rusak.',
+      'Autoen Industri Teknologi (AITEK) adalah perusahaan teknik yang berkantor di Bekasi Utara, Kota Bekasi. Pekerjaan kami sederhana untuk dijelaskan: membuat mesin, robot, dan sistem di tempat Anda bekerja lebih rapi, lebih cepat, dan lebih jarang rusak.',
       'Kami tidak menjual paket yang sama ke semua orang. Biasanya kami datang dulu, melihat lini produksi atau fasilitas Anda, ngobrol dengan operatornya, baru kemudian menyusun usulan. Yang merancang sistemnya juga ikut memasang dan mengetesnya di lokasi.',
     ],
     facts: [
-      { label: 'Kantor', value: 'BSD Icon, Tangerang' },
+      { label: 'Kantor', value: 'Bekasi Utara, Kota Bekasi' },
       { label: 'Bidang', value: 'Otomasi · Mesin · Robotik · IoT' },
       { label: 'Klien', value: 'Industri & pengelola kota' },
     ],

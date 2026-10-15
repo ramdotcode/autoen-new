@@ -90,13 +90,13 @@ export const en: Dictionary = {
 
   profile: {
     eyebrow: 'Company profile',
-    title: 'Engineers from BSD, working for Indonesian industry.',
+    title: 'Engineers from Bekasi, working for Indonesian industry.',
     paragraphs: [
-      'Autoen Industri Teknologi (AITEK) is an engineering company based in BSD, Tangerang. What we do is simple to explain: we make the machines, robots and systems where you work run cleaner, faster and break down less.',
+      'Autoen Industri Teknologi (AITEK) is an engineering company based in North Bekasi, Bekasi City. What we do is simple to explain: we make the machines, robots and systems where you work run cleaner, faster and break down less.',
       "We don't sell everyone the same package. Usually we visit first, walk your production line or facility, talk to the operators, and only then put a proposal together. The people who design the system also install and test it on site.",
     ],
     facts: [
-      { label: 'Office', value: 'BSD Icon, Tangerang' },
+      { label: 'Office', value: 'North Bekasi, Bekasi City' },
       { label: 'Focus', value: 'Automation · Machines · Robotics · IoT' },
       { label: 'Clients', value: 'Industry & city operators' },
     ],

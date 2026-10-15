@@ -24,14 +24,12 @@ export const id: Dictionary = {
     coreValues: 'Nilai utama',
     team: 'Struktur perusahaan',
     clients: 'Perusahaan yang sudah bekerja sama',
-    portfolioFilter: 'Saring proyek',
   },
 
   nav: [
     { label: 'Beranda', to: '/' },
     { label: 'Profil', to: '/profile' },
     { label: 'Produk', to: '/products' },
-    { label: 'Portfolio', to: '/portfolio' },
   ],
   navCta: 'Hubungi kami',
 
@@ -40,15 +38,11 @@ export const id: Dictionary = {
     intro: {
       profile: {
         title: 'Profil perusahaan',
-        text: 'Siapa kami, apa yang kami kejar, dan nilai yang kami pegang.',
+        text: 'Siapa kami, apa yang kami kejar, dan perusahaan yang sudah bekerja sama dengan kami.',
       },
       products: {
         title: 'Produk & layanan',
         text: 'Konsultan IT, mesin, robotik, IoT, dan otomasi, plus cara kami mengerjakannya dari awal sampai selesai.',
-      },
-      portfolio: {
-        title: 'Portfolio',
-        text: 'Proyek yang sudah selesai, yang sedang berjalan, dan perusahaan yang pernah bekerja sama dengan kami.',
       },
       contact: {
         title: 'Hubungi kami',
@@ -59,9 +53,9 @@ export const id: Dictionary = {
       eyebrow: 'Jelajahi',
       title: 'Kenali Autoen lebih dekat.',
       items: [
-        { to: '/profile', title: 'Profil', text: 'Visi, misi, dan nilai yang kami pegang.' },
+        { to: '/profile', title: 'Profil', text: 'Visi, misi, nilai, dan klien kami.' },
         { to: '/products', title: 'Produk', text: 'Konsultan IT, mesin, robotik, IoT, dan lainnya.' },
-        { to: '/portfolio', title: 'Portfolio', text: 'Proyek yang sudah dan sedang kami kerjakan.' },
+        { to: '/contact', title: 'Kontak', text: 'Alamat, telepon, dan form pesan.' },
       ],
     },
     notFound: {
@@ -115,17 +109,9 @@ export const id: Dictionary = {
     namePending: 'Nama menyusul',
   },
 
-  portfolio: {
-    eyebrow: 'Portfolio',
-    title: 'Proyek yang sudah dan sedang kami kerjakan.',
-    text: 'Sebagian pekerjaan kami untuk pabrik, utilitas, dan kota. Ingin tahu detailnya atau punya kebutuhan serupa? Tinggal tanya.',
-    filters: { all: 'Semua', done: 'Selesai', ongoing: 'Sedang dikerjakan' },
-    status: { done: 'Selesai', ongoing: 'Berjalan' },
-    clientPending: 'Nama klien menyusul',
-    sample: 'Contoh',
-    clientsTitle: 'Perusahaan yang sudah bekerja sama dengan kami',
-    clientSlot: 'Logo klien',
-    cta: 'Diskusikan proyek serupa',
+  clients: {
+    eyebrow: 'Klien',
+    title: 'Perusahaan yang sudah bekerja sama dengan kami.',
   },
 
   stats: [
@@ -256,8 +242,8 @@ export const id: Dictionary = {
         text: 'Kami tetap bisa dihubungi setelah proyek selesai, dan tim kami yang turun kalau ada kendala.',
       },
       {
-        title: 'Hasil yang bisa dilihat.',
-        text: 'Proyek yang sudah dan sedang kami kerjakan bisa Anda lihat di halaman Portfolio.',
+        title: 'Dipercaya perusahaan besar.',
+        text: 'Mayora dan Indolakto termasuk perusahaan yang sudah bekerja sama dengan kami.',
       },
     ],
   },

@@ -31,20 +31,23 @@ menampilkan lagi: tambahkan `<Team />` di `src/pages/ProfilePage.tsx`.
 - [ ] Foto tim di situs lama (`../Autoen/assets/img/team`) itu gambar bawaan
       template, **bukan orang Autoen**, jadi jangan dipakai.
 
-## 3. Portfolio & perusahaan yang sudah kerja sama
-File: `src/data/portfolio.ts`
+## 3. Klien (perusahaan yang sudah kerja sama)
+File: `src/data/clients.ts`, logo di `public/img/clients/`
 
-- [ ] Daftar proyek asli: nama proyek, klien, sektor, tahun, status
-      (`done` = selesai, `ongoing` = sedang dikerjakan), ringkasan 1 kalimat.
-      6 proyek yang ada sekarang **contoh semua** (`sample: true`).
-- [ ] Boleh tidaknya nama klien ditampilkan (kadang ada NDA).
-- [x] Klien pertama: **Mayora**. Logo putih diambil dari situs resminya
-      (mayora.com/img/mayora_logo_white.svg) → `public/img/clients/mayora.svg`.
-      Kalau owner punya file logo resmi dari Mayora, sebaiknya pakai yang itu.
-- [ ] Logo perusahaan klien/mitra lain (PNG/SVG transparan) → `public/img/clients/`,
-      lalu isi array `clients`. Sekarang masih slot kosong.
-- [ ] Logo klien di situs lama (`../Autoen/assets/img/clients`) juga bawaan
+**2026-10-15:** halaman Portfolio digabung ke Profil dan cuma berisi logo klien.
+Proyek-proyek contoh sudah dihapus. Link lama `/portfolio` otomatis diarahkan
+ke bagian klien di halaman Profil.
+
+- [x] **Mayora**: logo putih dari situs resminya (mayora.com/img/mayora_logo_white.svg).
+- [x] **PT Indolakto**: situs resminya (indomilk.com) cuma memakai logo merek
+      Indomilk, jadi yang dipasang logo Indomilk yang diubah jadi putih.
+- [ ] Kalau owner punya file logo resmi dari klien, sebaiknya pakai yang itu.
+- [ ] Logo klien lain → taruh di `public/img/clients/`, lalu tambahkan di `clients.ts`.
+      Pakai versi putih/terang supaya kelihatan di latar gelap.
+- [ ] Logo klien di situs lama (`../Autoen/assets/img/clients`) itu bawaan
       template, bukan klien asli.
+- [ ] Poin "Dipercaya perusahaan besar" di Beranda menyebut Mayora dan Indolakto.
+      Ubah juga kalau daftar klien berubah.
 
 ## 4. Produk
 File: `src/i18n/id.ts` dan `en.ts` → `services`

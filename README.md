@@ -40,15 +40,14 @@ src/
   components/
     Navbar (+ identity strip), Hero (+ NetworkGlobe canvas), Manifesto (vision,
     scroll word reveal), Profile (profile + mission), Team (org chart), Stats
-    (count-up), Services (products + marquee), Portfolio (filterable projects +
-    client logos), Process (timeline), Approach, WhyUs, CoreValues (tabs),
+    (count-up), Services (products + marquee), Clients (logo row), Process (timeline), Approach, WhyUs, CoreValues (tabs),
     Contact, Footer
     ui/  Button, Reveal, SectionHeading, LanguageToggle, Identity
   data/team.ts           company structure (names, roles, photos)
-  data/portfolio.ts      projects and client logos
+  data/clients.ts        client logos (files in public/img/clients/)
   lib/inquiry.ts         contactHref(): every CTA links to /contact, optionally with a topic
   lib/usePageMeta.ts     per-page tab title
-  pages/                 Home, ProfilePage, ProductsPage, PortfolioPage, ContactPage, NotFound
+  pages/                 Home, ProfilePage, ProductsPage, ContactPage, NotFound
 public/img/              logo and favicon (no stock illustrations; visuals are drawn in code)
 ```
 
@@ -58,10 +57,10 @@ React Router (`src/App.tsx`), one file per page in `src/pages/`:
 | Path         | Page           | Sections                                        |
 |--------------|----------------|-------------------------------------------------|
 | `/`          | Home           | Hero, vision, stats, explore links, approach, why us |
-| `/profile`   | Profile        | Profile + mission, team structure, core values  |
+| `/profile`   | Profile        | Profile + mission, client logos, core values    |
 | `/products`  | Products       | Product cards, process timeline                 |
-| `/portfolio` | Portfolio      | Filterable projects, client logos               |
 | `/contact`   | Contact        | Contact details + form (`?topic=` pre-fills a topic) |
+| `/portfolio` | (redirect)     | Old link, goes to `/profile#clients`            |
 | anything else| 404            |                                                 |
 
 Every CTA links to `/contact` via `contactHref()` in `src/lib/inquiry.ts`.

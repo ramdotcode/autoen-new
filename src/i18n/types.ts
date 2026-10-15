@@ -21,7 +21,6 @@ export type Dictionary = {
     coreValues: string
     team: string
     clients: string
-    portfolioFilter: string
   }
 
   nav: { label: string; to: string }[]
@@ -29,7 +28,7 @@ export type Dictionary = {
 
   pages: {
     home: string
-    intro: Record<'profile' | 'products' | 'portfolio' | 'contact', { title: string; text: string }>
+    intro: Record<'profile' | 'products' | 'contact', { title: string; text: string }>
     explore: { eyebrow: string; title: string; items: { to: string; title: string; text: string }[] }
     notFound: { title: string; text: string; back: string }
   }
@@ -63,18 +62,7 @@ export type Dictionary = {
     namePending: string
   }
 
-  portfolio: {
-    eyebrow: string
-    title: string
-    text: string
-    filters: { all: string; done: string; ongoing: string }
-    status: { done: string; ongoing: string }
-    clientPending: string
-    sample: string
-    clientsTitle: string
-    clientSlot: string
-    cta: string
-  }
+  clients: { eyebrow: string; title: string }
 
   stats: { value: number; suffix: string; label: string }[]
 

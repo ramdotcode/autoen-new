@@ -24,14 +24,12 @@ export const en: Dictionary = {
     coreValues: 'Core values',
     team: 'Company structure',
     clients: 'Companies we have worked with',
-    portfolioFilter: 'Filter projects',
   },
 
   nav: [
     { label: 'Home', to: '/' },
     { label: 'Profile', to: '/profile' },
     { label: 'Products', to: '/products' },
-    { label: 'Portfolio', to: '/portfolio' },
   ],
   navCta: 'Contact us',
 
@@ -40,15 +38,11 @@ export const en: Dictionary = {
     intro: {
       profile: {
         title: 'Company profile',
-        text: 'Who we are, what we are working towards, and the values we hold.',
+        text: 'Who we are, what we are working towards, and the companies we have worked with.',
       },
       products: {
         title: 'Products & services',
         text: 'IT consulting, machines, robotics, IoT and automation, plus how we take a project from start to finish.',
-      },
-      portfolio: {
-        title: 'Portfolio',
-        text: "Projects we've finished, projects in progress, and the companies we've worked with.",
       },
       contact: {
         title: 'Contact us',
@@ -59,9 +53,9 @@ export const en: Dictionary = {
       eyebrow: 'Explore',
       title: 'Get to know Autoen.',
       items: [
-        { to: '/profile', title: 'Profile', text: 'Our vision, mission and values.' },
+        { to: '/profile', title: 'Profile', text: 'Our vision, mission, values and clients.' },
         { to: '/products', title: 'Products', text: 'IT consulting, machines, robotics, IoT and more.' },
-        { to: '/portfolio', title: 'Portfolio', text: "Projects we've finished and are working on." },
+        { to: '/contact', title: 'Contact', text: 'Address, phone and a message form.' },
       ],
     },
     notFound: {
@@ -115,17 +109,9 @@ export const en: Dictionary = {
     namePending: 'Name to be confirmed',
   },
 
-  portfolio: {
-    eyebrow: 'Portfolio',
-    title: "Projects we've finished and are working on.",
-    text: 'Some of our work for factories, utilities and cities. Want the details, or have a similar need? Just ask.',
-    filters: { all: 'All', done: 'Completed', ongoing: 'In progress' },
-    status: { done: 'Completed', ongoing: 'In progress' },
-    clientPending: 'Client name to be confirmed',
-    sample: 'Sample',
-    clientsTitle: 'Companies that have worked with us',
-    clientSlot: 'Client logo',
-    cta: 'Discuss a similar project',
+  clients: {
+    eyebrow: 'Clients',
+    title: 'Companies that have worked with us.',
   },
 
   stats: [
@@ -256,8 +242,8 @@ export const en: Dictionary = {
         text: "You can still reach us after the project ends, and our team comes out if something goes wrong.",
       },
       {
-        title: 'Results you can see.',
-        text: "Projects we've finished and are working on are on the Portfolio page.",
+        title: 'Trusted by major companies.',
+        text: 'Mayora and Indolakto are among the companies we have worked with.',
       },
     ],
   },

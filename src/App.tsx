@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { Route, Routes, useLocation } from 'react-router'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
 import Home from './pages/Home'
 import ProfilePage from './pages/ProfilePage'
 import ProductsPage from './pages/ProductsPage'
-import PortfolioPage from './pages/PortfolioPage'
 import ContactPage from './pages/ContactPage'
 import NotFound from './pages/NotFound'
 import { useI18n } from './i18n'
@@ -50,7 +49,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/products" element={<ProductsPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
+            {/* the portfolio page was folded into the profile page; keep old links working */}
+            <Route path="/portfolio" element={<Navigate to="/profile#clients" replace />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

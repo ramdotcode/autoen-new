@@ -38,9 +38,9 @@ File: `src/data/portfolio.ts`
       (`done` = selesai, `ongoing` = sedang dikerjakan), ringkasan 1 kalimat.
       6 proyek yang ada sekarang **contoh semua** (`sample: true`).
 - [ ] Boleh tidaknya nama klien ditampilkan (kadang ada NDA).
-- [x] Klien pertama: **Mayora** (sementara tampil sebagai teks).
-- [ ] File logo Mayora resmi (PNG/SVG transparan) → `public/img/clients/mayora.png`,
-      lalu isi `logo` di `src/data/portfolio.ts`.
+- [x] Klien pertama: **Mayora**. Logo putih diambil dari situs resminya
+      (mayora.com/img/mayora_logo_white.svg) → `public/img/clients/mayora.svg`.
+      Kalau owner punya file logo resmi dari Mayora, sebaiknya pakai yang itu.
 - [ ] Logo perusahaan klien/mitra lain (PNG/SVG transparan) → `public/img/clients/`,
       lalu isi array `clients`. Sekarang masih slot kosong.
 - [ ] Logo klien di situs lama (`../Autoen/assets/img/clients`) juga bawaan

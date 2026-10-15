@@ -74,10 +74,10 @@ export const en: Dictionary = {
 
   hero: {
     eyebrow: 'Automation · IoT · Smart Industry',
-    titleLines: ["Let's realize", 'business transformation', 'through smart solutions.'],
-    highlight: 'smart solutions.',
+    titleLines: ['Less manual work,', 'production keeps running.', "That's our job."],
+    highlight: "That's our job.",
     subtitle:
-      'Automation, IoT and intelligent systems engineered for Indonesian industry, built by a team of experienced professionals.',
+      'We help factories cut downtime and monitor production from anywhere, through automation, robotics and IoT.',
     primaryCta: 'Start a project',
     secondaryCta: 'See products',
     scroll: 'Scroll',
@@ -265,17 +265,25 @@ export const en: Dictionary = {
 
   whyUs: {
     eyebrow: 'Why Autoen',
-    title: 'A partner for the whole transformation, not just the install.',
+    title: 'Why clients choose Autoen.',
     imageAlt: 'Illustration of secure, connected industrial systems',
     items: [
       {
-        title: 'Integrated tech solutions',
-        text: 'Boosting efficiency, productivity and connectivity across industries.',
+        title: 'One team from start to finish.',
+        text: "The people who survey, design and install are the same team, so you never have to explain things again to someone new.",
       },
-      { title: 'Continuous innovation', text: 'Harnessing automation, AI and IoT to stay ahead.' },
-      { title: 'Secure & reliable systems', text: 'Tailored, cyber-resilient technology you can depend on.' },
-      { title: 'Digital transformation partner', text: 'Consulting, integration and long-term support.' },
-      { title: 'Trusted collaboration', text: 'Built on integrity, transparency and client satisfaction.' },
+      {
+        title: 'Solutions that fit the need.',
+        text: "If your old machine is still worth repairing, we'll tell you. Not every problem needs a new system.",
+      },
+      {
+        title: 'Support after handover.',
+        text: "You can still reach us after the project ends, and our team comes out if something goes wrong.",
+      },
+      {
+        title: 'Results you can see.',
+        text: "Projects we've finished and are working on are on the Portfolio page.",
+      },
     ],
   },
 
@@ -285,26 +293,11 @@ export const en: Dictionary = {
     text: 'These values empower us to deliver technology that drives real growth for clients and partners.',
     valuePrefix: 'Value',
     items: [
-      {
-        title: 'Innovation',
-        text: 'We continuously create new solutions and apply the latest technology in every product and service, evolving with an ever-changing market.',
-      },
-      {
-        title: 'Reliability',
-        text: 'We build dependable systems so clients reach maximum operational efficiency without disruption.',
-      },
-      {
-        title: 'Security',
-        text: 'Data and operations matter. We prioritise security in every layer and protect infrastructure from cyber threats.',
-      },
-      {
-        title: 'Efficiency',
-        text: 'We raise productivity and cut waste through automation and cutting-edge technology that optimises every process.',
-      },
-      {
-        title: 'Integrity',
-        text: 'We act with honesty, transparency and responsibility in every relationship with clients and partners.',
-      },
+      { title: 'Innovation', text: 'We adopt new technology when it proves better, not just because it is new.' },
+      { title: 'Reliability', text: 'Systems are tested until stable before handover.' },
+      { title: 'Security', text: 'Access to your machines and data is limited to authorised people.' },
+      { title: 'Efficiency', text: 'Enough, never excessive. One sensor if one is all it takes.' },
+      { title: 'Integrity', text: 'We tell you about issues and delays first.' },
     ],
   },
 

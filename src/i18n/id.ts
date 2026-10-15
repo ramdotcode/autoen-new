@@ -74,10 +74,10 @@ export const id: Dictionary = {
 
   hero: {
     eyebrow: 'Otomasi · IoT · Industri Cerdas',
-    titleLines: ['Mari wujudkan', 'transformasi bisnis', 'lewat solusi cerdas.'],
-    highlight: 'solusi cerdas.',
+    titleLines: ['Kerja manual berkurang,', 'produksi tetap jalan.', 'Itu tugas kami.'],
+    highlight: 'Itu tugas kami.',
     subtitle:
-      'Otomasi, IoT dan sistem cerdas yang dirancang untuk industri Indonesia, dikerjakan oleh tim profesional berpengalaman.',
+      'Kami bantu pabrik menekan downtime dan memantau produksi dari mana saja, lewat otomasi, robotik, dan IoT.',
     primaryCta: 'Mulai proyek',
     secondaryCta: 'Lihat produk',
     scroll: 'Gulir',
@@ -265,17 +265,25 @@ export const id: Dictionary = {
 
   whyUs: {
     eyebrow: 'Kenapa Autoen',
-    title: 'Mitra untuk seluruh transformasi, bukan sekadar pemasangan.',
+    title: 'Kenapa klien memilih Autoen.',
     imageAlt: 'Ilustrasi sistem industri yang terhubung dan aman',
     items: [
       {
-        title: 'Solusi teknologi terintegrasi',
-        text: 'Meningkatkan efisiensi, produktivitas dan konektivitas lintas industri.',
+        title: 'Satu tim dari awal sampai akhir.',
+        text: 'Tim yang survei, merancang, dan memasang adalah tim yang sama, jadi Anda tidak perlu menjelaskan ulang ke orang baru.',
       },
-      { title: 'Inovasi berkelanjutan', text: 'Memanfaatkan otomasi, AI dan IoT untuk terus selangkah di depan.' },
-      { title: 'Sistem aman & andal', text: 'Teknologi yang disesuaikan dan tahan serangan siber, siap Anda andalkan.' },
-      { title: 'Mitra transformasi digital', text: 'Konsultasi, integrasi dan dukungan jangka panjang.' },
-      { title: 'Kolaborasi yang tepercaya', text: 'Dibangun di atas integritas, transparansi dan kepuasan klien.' },
+      {
+        title: 'Solusi sesuai kebutuhan.',
+        text: 'Kalau mesin lama Anda masih layak diperbaiki, kami sampaikan. Tidak semua masalah harus diselesaikan dengan sistem baru.',
+      },
+      {
+        title: 'Pendampingan setelah serah terima.',
+        text: 'Kami tetap bisa dihubungi setelah proyek selesai, dan tim kami yang turun kalau ada kendala.',
+      },
+      {
+        title: 'Hasil yang bisa dilihat.',
+        text: 'Proyek yang sudah dan sedang kami kerjakan bisa Anda lihat di halaman Portfolio.',
+      },
     ],
   },
 
@@ -285,26 +293,11 @@ export const id: Dictionary = {
     text: 'Nilai-nilai ini mendorong kami menghadirkan teknologi yang membawa pertumbuhan nyata bagi klien dan mitra.',
     valuePrefix: 'Nilai',
     items: [
-      {
-        title: 'Inovasi',
-        text: 'Kami terus menciptakan solusi baru dan menerapkan teknologi terkini pada setiap produk dan layanan, berkembang bersama pasar yang terus berubah.',
-      },
-      {
-        title: 'Keandalan',
-        text: 'Kami membangun sistem yang dapat diandalkan agar klien mencapai efisiensi operasional maksimal tanpa gangguan.',
-      },
-      {
-        title: 'Keamanan',
-        text: 'Data dan operasi adalah hal penting. Kami mengutamakan keamanan di setiap lapisan dan melindungi infrastruktur dari ancaman siber.',
-      },
-      {
-        title: 'Efisiensi',
-        text: 'Kami menaikkan produktivitas dan menekan pemborosan melalui otomasi serta teknologi mutakhir yang mengoptimalkan setiap proses.',
-      },
-      {
-        title: 'Integritas',
-        text: 'Kami bertindak jujur, transparan dan bertanggung jawab dalam setiap hubungan dengan klien dan mitra.',
-      },
+      { title: 'Inovasi', text: 'Teknologi baru kami pakai kalau terbukti lebih baik, bukan sekadar karena baru.' },
+      { title: 'Keandalan', text: 'Sistem diuji sampai stabil sebelum diserahkan.' },
+      { title: 'Keamanan', text: 'Akses ke mesin dan data Anda hanya untuk orang yang berwenang.' },
+      { title: 'Efisiensi', text: 'Secukupnya, tidak berlebihan. Satu sensor kalau memang cukup satu.' },
+      { title: 'Integritas', text: 'Kendala dan keterlambatan kami sampaikan lebih dulu.' },
     ],
   },
 

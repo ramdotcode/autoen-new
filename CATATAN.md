@@ -189,8 +189,9 @@ Isinya mirip Kenapa Autoen. Kalau dua section digabung, bagian ini bisa dihapus.
 - **A.** Tim kami datang ke lokasi, melihat prosesnya langsung, lalu menggambar rancangan solusinya bersama Anda.
 - **B.** Kami ngobrol dengan operator dan melihat mesinnya sendiri. Dari situ kami susun rancangan yang bisa Anda periksa dulu sebelum ada biaya apa pun. **[cek: survei gratis atau tidak]**
 
-## 9. Pilihan final (belum dipasang ke web)
-Teks yang sudah dipilih. Dipasang sekaligus setelah semua bagian dipilih.
+## 9. Pilihan final
+Teks yang sudah dipilih. Yang dicentang sudah dipasang di branch `development`
+(versi ID dan EN), belum di `main`.
 
 - [x] **Judul hero** (`hero.titleLines`, `hero.highlight` = "Itu tugas kami."):
       Kerja manual berkurang, / produksi tetap jalan. / Itu tugas kami.
@@ -215,3 +216,9 @@ Teks yang sudah dipilih. Dipasang sekaligus setelah semua bagian dipilih.
   - Integritas: Kendala dan keterlambatan kami sampaikan lebih dulu.
 - [ ] **Nilai utama, pembuka** (`coreValues.text`): usulan versi pendek "Prinsip kerja
       yang kami pegang, dari survei pertama sampai perawatan." (belum dikonfirmasi)
+
+### Masih harus diputuskan
+- [ ] Pembuka nilai utama (`coreValues.text`): pakai usulan di atas, ganti, atau hapus.
+- [ ] Section "Yang paling kami utamakan" (`approach`) di Beranda: dihapus
+      (isinya mirip "Kenapa klien memilih Autoen") atau ditulis ulang.
+- [ ] Tahap 02 di Proses, footer, dan deskripsi Google (lihat bagian 7).

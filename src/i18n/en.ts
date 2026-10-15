@@ -40,7 +40,7 @@ export const en: Dictionary = {
     intro: {
       profile: {
         title: 'Company profile',
-        text: 'Who we are, what we are working towards, and the people who do the work.',
+        text: 'Who we are, what we are working towards, and the values we hold.',
       },
       products: {
         title: 'Products & services',
@@ -59,7 +59,7 @@ export const en: Dictionary = {
       eyebrow: 'Explore',
       title: 'Get to know Autoen.',
       items: [
-        { to: '/profile', title: 'Profile', text: 'Our vision, mission and team structure.' },
+        { to: '/profile', title: 'Profile', text: 'Our vision, mission and values.' },
         { to: '/products', title: 'Products', text: 'IT consulting, machines, robotics, IoT and more.' },
         { to: '/portfolio', title: 'Portfolio', text: "Projects we've finished and are working on." },
       ],

@@ -40,7 +40,7 @@ export const id: Dictionary = {
     intro: {
       profile: {
         title: 'Profil perusahaan',
-        text: 'Siapa kami, apa yang kami kejar, dan orang-orang yang mengerjakannya.',
+        text: 'Siapa kami, apa yang kami kejar, dan nilai yang kami pegang.',
       },
       products: {
         title: 'Produk & layanan',
@@ -59,7 +59,7 @@ export const id: Dictionary = {
       eyebrow: 'Jelajahi',
       title: 'Kenali Autoen lebih dekat.',
       items: [
-        { to: '/profile', title: 'Profil', text: 'Visi, misi, dan struktur tim kami.' },
+        { to: '/profile', title: 'Profil', text: 'Visi, misi, dan nilai yang kami pegang.' },
         { to: '/products', title: 'Produk', text: 'Konsultan IT, mesin, robotik, IoT, dan lainnya.' },
         { to: '/portfolio', title: 'Portfolio', text: 'Proyek yang sudah dan sedang kami kerjakan.' },
       ],

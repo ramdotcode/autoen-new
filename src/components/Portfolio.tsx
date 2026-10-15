@@ -121,14 +121,14 @@ export function Portfolio() {
             initial={reduce ? undefined : 'hidden'}
             whileInView={reduce ? undefined : 'visible'}
             viewport={viewportOnce}
-            className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
+            className="mt-8 flex flex-wrap justify-center gap-3"
             aria-label={t.a11y.clients}
           >
             {slots.map((c, i) => (
               <motion.li
                 key={c?.name ?? i}
                 variants={reduce ? undefined : fadeUp}
-                className={`flex h-20 items-center justify-center rounded-xl px-4 ${
+                className={`flex h-24 w-[calc(50%-0.375rem)] items-center justify-center rounded-xl px-5 sm:w-48 ${
                   c ? 'border border-line bg-surface' : 'border border-dashed border-line-strong'
                 }`}
               >
@@ -137,11 +137,11 @@ export function Portfolio() {
                     <img
                       src={c.logo}
                       alt={c.name}
-                      className="max-h-10 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+                      className="max-h-12 w-auto max-w-full object-contain"
                       loading="lazy"
                     />
                   ) : (
-                    <span className="text-center text-sm text-muted">{c.name}</span>
+                    <span className="text-center text-lg font-semibold uppercase tracking-[0.12em] text-fg">{c.name}</span>
                   )
                 ) : (
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-dim">{t.portfolio.clientSlot}</span>

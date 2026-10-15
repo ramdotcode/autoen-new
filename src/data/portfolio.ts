@@ -94,4 +94,7 @@ export const projects: Project[] = [
  * Companies Autoen has worked with. Add `logo` as a path under public/
  * (e.g. '/img/clients/acme.svg'). While empty, the section shows blank slots.
  */
-export const clients: { name: string; logo?: string }[] = []
+export const clients: { name: string; logo?: string }[] = [
+  // TODO: add logo: '/img/clients/mayora.png' once the official file is supplied
+  { name: 'Mayora' },
+]

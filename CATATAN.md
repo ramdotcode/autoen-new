@@ -20,6 +20,9 @@ File: `src/i18n/id.ts` dan `src/i18n/en.ts` → `manifesto` (visi) dan `profile`
 ## 2. Struktur perusahaan (orang-orangnya)
 File: `src/data/team.ts`
 
+**Disembunyikan dulu dari web (2026-10-15)** sampai nama asli ada. Untuk
+menampilkan lagi: tambahkan `<Team />` di `src/pages/ProfilePage.tsx`.
+
 - [ ] Nama tiap orang (semua masih kosong → "Nama menyusul").
 - [ ] Jabatan. Susunan sekarang cuma tebakan umum: Direktur Utama → Direktur
       Teknik & Manajer Keuangan/Admin → Lead Otomasi, Lead IoT, Software Engineer,
@@ -35,7 +38,10 @@ File: `src/data/portfolio.ts`
       (`done` = selesai, `ongoing` = sedang dikerjakan), ringkasan 1 kalimat.
       6 proyek yang ada sekarang **contoh semua** (`sample: true`).
 - [ ] Boleh tidaknya nama klien ditampilkan (kadang ada NDA).
-- [ ] Logo perusahaan klien/mitra (PNG/SVG transparan) → `public/img/clients/`,
+- [x] Klien pertama: **Mayora** (sementara tampil sebagai teks).
+- [ ] File logo Mayora resmi (PNG/SVG transparan) → `public/img/clients/mayora.png`,
+      lalu isi `logo` di `src/data/portfolio.ts`.
+- [ ] Logo perusahaan klien/mitra lain (PNG/SVG transparan) → `public/img/clients/`,
       lalu isi array `clients`. Sekarang masih slot kosong.
 - [ ] Logo klien di situs lama (`../Autoen/assets/img/clients`) juga bawaan
       template, bukan klien asli.

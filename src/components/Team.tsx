@@ -47,6 +47,7 @@ function MemberCard({ member, lead }: { member: TeamMember; lead: boolean }) {
   )
 }
 
+/** Not shown for now (hidden 2026-10-15 until real names arrive); add <Team /> back to ProfilePage. */
 export function Team() {
   const reduce = useReducedMotion()
   const { t } = useI18n()

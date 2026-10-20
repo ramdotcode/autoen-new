@@ -113,6 +113,7 @@ export function Hero() {
             <img
               src="/img/robot-poster-tall.webp"
               alt=""
+              fetchPriority="high"
               decoding="async"
               className={`absolute left-0 top-1/2 h-auto w-full -translate-y-1/2 transition-opacity duration-700 sm:left-1/2 sm:top-0 sm:h-full sm:w-auto sm:max-w-none sm:-translate-x-1/2 sm:translate-y-0 ${robotReady ? 'opacity-0' : 'opacity-100'}`}
             />

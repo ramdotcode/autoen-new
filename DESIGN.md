@@ -36,7 +36,7 @@ card hover border, progress lines.
 - Stagger groups: 0.08s between children, max ~6 children.
 - Hover: translateY(-2px) + border/glow change, 0.3s. No scale > 1.03.
 - Scroll-driven: manifesto word reveal, process timeline progress, hero parallax.
-- Reduced motion: entrance becomes instant, globe is static, marquee stops.
+- Reduced motion: entrance becomes instant, hero robot is a still frame (no cursor follow), marquee stops.
 
 ## Components
 - Button: primary (accent bg, white text), ghost (border line, hover border-strong).

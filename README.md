@@ -38,7 +38,7 @@ src/
   data/content.ts        language-independent company data (address, phone, email)
   lib/motion.ts          shared variants / easing
   components/
-    Navbar (+ identity strip), Hero (+ NetworkGlobe canvas), Manifesto (vision,
+    Navbar (+ identity strip), Hero (+ RobotArm three.js scene), Manifesto (vision,
     scroll word reveal), Profile (profile + mission), Team (org chart), Stats
     (count-up), Services (products + marquee), Clients (logo row), Process (timeline), Approach, WhyUs, CoreValues (tabs),
     Contact, Footer

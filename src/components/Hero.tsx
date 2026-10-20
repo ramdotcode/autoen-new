@@ -1,9 +1,11 @@
-import { useRef } from 'react'
+import { lazy, Suspense, useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useI18n } from '../i18n'
 import { Button } from './ui/Button'
 import { contactHref } from '../lib/inquiry'
-import { NetworkGlobe } from './NetworkGlobe'
+
+// three.js is heavy, so the robot loads in its own chunk after the page paints.
+const RobotArm = lazy(() => import('./RobotArm'))
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -26,7 +28,7 @@ export function Hero() {
   const { t } = useI18n()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80])
-  const globeY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140])
+  const robotY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140])
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
   const lineVariants = {
@@ -51,8 +53,8 @@ export function Hero() {
       />
 
       <motion.div
-        style={{ y: globeY }}
-        className="pointer-events-none absolute -right-[10%] top-[8%] h-[70vmin] w-[70vmin] opacity-70 sm:opacity-100 sm:-right-[6%] sm:top-[6%] sm:h-[80vmin] sm:w-[80vmin] lg:right-[-2%] lg:top-[4%] lg:h-[92vh] lg:w-[92vh]"
+        style={{ y: robotY }}
+        className="pointer-events-none absolute inset-x-0 top-[7%] h-[58svh] opacity-60 sm:opacity-90 lg:left-auto lg:right-0 lg:top-[6%] lg:h-[90%] lg:w-[58%] lg:opacity-100"
         aria-hidden
       >
         <motion.div
@@ -61,7 +63,9 @@ export function Hero() {
           transition={{ duration: 1.4, ease, delay: 0.1 }}
           className="h-full w-full"
         >
-          <NetworkGlobe className="h-full w-full" />
+          <Suspense fallback={null}>
+            <RobotArm className="h-full w-full" />
+          </Suspense>
         </motion.div>
       </motion.div>
 

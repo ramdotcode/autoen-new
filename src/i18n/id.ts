@@ -75,7 +75,7 @@ export const id: Dictionary = {
     primaryCta: 'Mulai proyek',
     secondaryCta: 'Lihat produk',
     scroll: 'Gulir',
-    robotHint: { mouse: 'Gerakkan kursor, robot mengikuti', touch: 'Sentuh, robot mengikuti' },
+    robotHint: { mouse: 'Arahkan', touch: 'Sentuh' },
   },
 
   manifesto: {

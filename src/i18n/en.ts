@@ -75,7 +75,7 @@ export const en: Dictionary = {
     primaryCta: 'Start a project',
     secondaryCta: 'See products',
     scroll: 'Scroll',
-    robotHint: { mouse: 'Move your cursor, the robot follows', touch: 'Touch, the robot follows' },
+    robotHint: { mouse: 'Hover', touch: 'Touch' },
   },
 
   manifesto: {

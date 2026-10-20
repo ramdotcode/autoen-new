@@ -19,16 +19,16 @@ function RobotHint({ label, touch }: { label: string; touch: boolean }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8, transition: { duration: 0.4, ease } }}
       transition={{ duration: 0.6, ease, delay: 0.8 }}
-      className="flex items-center gap-2.5 rounded-full border border-line-strong bg-surface/80 py-2 pl-2.5 pr-4 whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.14em] text-fg shadow-lg shadow-black/30 backdrop-blur-md"
+      className="flex items-center gap-1.5 rounded-full border border-line-strong bg-surface/80 py-1 pl-1 pr-2.5 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.16em] text-fg shadow-lg shadow-black/30 backdrop-blur-md"
     >
-      <span className="relative flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent-soft">
+      <span className="relative flex h-5 w-5 items-center justify-center rounded-full bg-accent/15 text-accent-soft">
         <span className="absolute inset-0 animate-ping rounded-full bg-accent/30" />
         <motion.span
           animate={touch ? { y: [0, -2, 1, 0], scale: [1, 1, 0.88, 1] } : { x: [0, 3, -1, 0], y: [0, -2, 1, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
           className="relative"
         >
-          <Icon className="h-3.5 w-3.5" strokeWidth={2.25} />
+          <Icon className="h-3 w-3" strokeWidth={2.25} />
         </motion.span>
       </span>
       {label}

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
-import { MousePointer2, Pointer } from 'lucide-react'
+import { Pointer } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { Button } from './ui/Button'
 import { contactHref } from '../lib/inquiry'
@@ -10,28 +10,34 @@ const RobotArm = lazy(() => import('./RobotArm'))
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-/** Tells visitors the robot reacts to them; fades out after they have tried it. */
-function RobotHint({ label, touch }: { label: string; touch: boolean }) {
-  const Icon = touch ? Pointer : MousePointer2
+/** A tapping hand that tells visitors the robot reacts to them; fades out after they try it. */
+function RobotHint({ label }: { label: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 8, transition: { duration: 0.4, ease } }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.4, ease } }}
       transition={{ duration: 0.6, ease, delay: 0.8 }}
-      className="flex items-center gap-1.5 rounded-full border border-line-strong bg-surface/80 py-1 pl-1 pr-2.5 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.16em] text-fg shadow-lg shadow-black/30 backdrop-blur-md"
+      className="relative flex h-16 w-16 items-center justify-center"
     >
-      <span className="relative flex h-5 w-5 items-center justify-center rounded-full bg-accent/15 text-accent-soft">
-        <span className="absolute inset-0 animate-ping rounded-full bg-accent/30" />
+      <span className="sr-only">{label}</span>
+      {/* Ripples start as the hand taps, once per 1.8s loop. */}
+      {[0.8, 1.15].map((delay) => (
         <motion.span
-          animate={touch ? { y: [0, -2, 1, 0], scale: [1, 1, 0.88, 1] } : { x: [0, 3, -1, 0], y: [0, -2, 1, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative"
-        >
-          <Icon className="h-3 w-3" strokeWidth={2.25} />
-        </motion.span>
-      </span>
-      {label}
+          key={delay}
+          className="absolute h-10 w-10 rounded-full border border-accent-soft/70"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: [0.9, 2], opacity: [0.8, 0] }}
+          transition={{ duration: 1.1, delay, repeat: Infinity, repeatDelay: 0.7, ease: 'easeOut' }}
+        />
+      ))}
+      <motion.span
+        animate={{ scale: [1, 1, 0.84, 1, 1], y: [0, -2, 1, 0, 0] }}
+        transition={{ duration: 1.8, times: [0, 0.3, 0.45, 0.6, 1], repeat: Infinity, ease: 'easeInOut' }}
+        className="relative flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-surface/80 text-fg shadow-lg shadow-black/40 backdrop-blur-md"
+      >
+        <Pointer className="h-4 w-4" strokeWidth={2} />
+      </motion.span>
     </motion.div>
   )
 }
@@ -106,10 +112,10 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-x-0 top-24 z-10 flex justify-center px-6 sm:top-28 lg:inset-x-auto lg:right-[29%] lg:top-auto lg:bottom-[9%] lg:translate-x-1/2 lg:px-0">
+      <div className="pointer-events-none absolute inset-x-0 top-[22%] z-10 flex justify-center px-6 lg:inset-x-auto lg:right-[24%] lg:top-[30%] lg:translate-x-1/2 lg:px-0">
         <AnimatePresence>
           {robotReady && !robotTouched && !reduce && (
-            <RobotHint label={finePointer ? t.hero.robotHint.mouse : t.hero.robotHint.touch} touch={!finePointer} />
+            <RobotHint label={finePointer ? t.hero.robotHint.mouse : t.hero.robotHint.touch} />
           )}
         </AnimatePresence>
       </div>

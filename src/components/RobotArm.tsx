@@ -537,11 +537,20 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
 
     // ---- Frame loop -------------------------------------------------------
     const updateCell = (dt: number, now: number) => {
-      // Conveyor: boxes slide toward the pick point and queue up.
+      // Conveyor: boxes slide toward the pick point and queue up. Like a real
+      // stopper, the next box waits behind the pick point until the box just
+      // picked has been lifted clear of it.
+      const tip = fk(q)
+      const pick = conveyorPose(CONV.pick)
+      const pickBusy =
+        !!held &&
+        Math.hypot(tip.x - pick.x, tip.z - pick.z) < BOX.l + 0.35 &&
+        tip.y < CONV.top + 2 * BOX.h + 0.12
       for (let i = 0; i < conv.length; i++) {
         const b = conv[i]
-        const stop = i === 0 ? CONV.pick : conv[i - 1].r + BOX.l + 0.06
-        b.r = Math.max(stop, b.r - CONV.speed * dt)
+        const stop = i > 0 ? conv[i - 1].r + BOX.l + 0.06 : pickBusy ? CONV.pick + BOX.l + 0.06 : CONV.pick
+        // Never push a box backwards; only hold it where it is.
+        b.r = Math.min(b.r, Math.max(stop, b.r - CONV.speed * dt))
         b.age += dt
         const p = conveyorPose(b.r)
         b.mesh.position.set(p.x, CONV.top + BOX.h / 2, p.z)

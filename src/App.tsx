@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, m, useReducedMotion } from 'motion/react'
 import { Navigate, Route, Routes, useLocation } from 'react-router'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
@@ -36,7 +36,7 @@ export default function App() {
       </a>
       <Navbar />
       <AnimatePresence mode="wait">
-        <motion.main
+        <m.main
           key={location.pathname}
           id="main"
           initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -54,7 +54,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </motion.main>
+        </m.main>
       </AnimatePresence>
       <Footer />
     </>

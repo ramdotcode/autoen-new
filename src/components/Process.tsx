@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
+import { m, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { Check } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
@@ -31,7 +31,7 @@ export function Process() {
           <ol ref={ref} className="relative lg:col-span-8" aria-label={t.a11y.process}>
             {/* track */}
             <div className="absolute left-[15px] top-2 bottom-2 w-px bg-line md:left-[19px]" aria-hidden />
-            <motion.div
+            <m.div
               style={{ scaleY: reduce ? 1 : scaleY }}
               className="absolute left-[15px] top-2 bottom-2 w-px origin-top bg-gradient-to-b from-accent-red via-violet-500 to-accent md:left-[19px]"
               aria-hidden

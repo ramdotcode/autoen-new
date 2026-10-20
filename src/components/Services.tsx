@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { Link } from 'react-router'
@@ -39,7 +39,7 @@ export function Services() {
           />
         </div>
 
-        <motion.ul
+        <m.ul
           variants={reduce ? undefined : stagger(0.1, 0.08)}
           initial={reduce ? undefined : 'hidden'}
           whileInView={reduce ? undefined : 'visible'}
@@ -49,7 +49,7 @@ export function Services() {
           {t.services.items.map((s) => {
             const Icon = s.icon
             return (
-              <motion.li
+              <m.li
                 key={s.title}
                 variants={reduce ? undefined : fadeUp}
                 whileHover={reduce ? undefined : { y: -4 }}
@@ -84,10 +84,10 @@ export function Services() {
                     />
                   </span>
                 </Link>
-              </motion.li>
+              </m.li>
             )
           })}
-        </motion.ul>
+        </m.ul>
       </div>
       <Marquee />
     </section>

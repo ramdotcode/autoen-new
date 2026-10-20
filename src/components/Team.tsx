@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { UserRound } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { team, type TeamMember } from '../data/team'
@@ -20,7 +20,7 @@ function MemberCard({ member, lead }: { member: TeamMember; lead: boolean }) {
   const role = member.role[lang]
 
   return (
-    <motion.li
+    <m.li
       variants={reduce ? undefined : fadeUp}
       whileHover={reduce ? undefined : { y: -4 }}
       transition={{ duration: 0.3 }}
@@ -43,7 +43,7 @@ function MemberCard({ member, lead }: { member: TeamMember; lead: boolean }) {
         </p>
         <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent-soft">{role}</p>
       </div>
-    </motion.li>
+    </m.li>
   )
 }
 
@@ -62,7 +62,7 @@ export function Team() {
           {team.map((tier, i) => (
             <div key={i} className="flex w-full flex-col items-center">
               {i > 0 && (
-                <motion.span
+                <m.span
                   initial={reduce ? false : { scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
                   viewport={viewportOnce}
@@ -71,17 +71,17 @@ export function Team() {
                   aria-hidden
                 />
               )}
-              <motion.ul
+              <m.ul
                 variants={reduce ? undefined : stagger(0.1, 0.08)}
                 initial={reduce ? undefined : 'hidden'}
                 whileInView={reduce ? undefined : 'visible'}
                 viewport={viewportOnce}
                 className="flex w-full flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4"
               >
-                {tier.map((m) => (
-                  <MemberCard key={m.role.en} member={m} lead={i === 0} />
+                {tier.map((member) => (
+                  <MemberCard key={member.role.en} member={member} lead={i === 0} />
                 ))}
-              </motion.ul>
+              </m.ul>
             </div>
           ))}
         </div>

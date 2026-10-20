@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { useI18n } from '../i18n'
 import { clients } from '../data/clients'
 import { SectionHeading } from './ui/SectionHeading'
@@ -14,7 +14,7 @@ export function Clients() {
     <section id="clients" className="relative bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <SectionHeading eyebrow={t.clients.eyebrow} title={t.clients.title} align="center" />
-        <motion.ul
+        <m.ul
           variants={reduce ? undefined : stagger(0.1, 0.08)}
           initial={reduce ? undefined : 'hidden'}
           whileInView={reduce ? undefined : 'visible'}
@@ -23,7 +23,7 @@ export function Clients() {
           aria-label={t.a11y.clients}
         >
           {clients.map((c) => (
-            <motion.li
+            <m.li
               key={c.name}
               variants={reduce ? undefined : fadeUp}
               whileHover={reduce ? undefined : { y: -4 }}
@@ -37,9 +37,9 @@ export function Clients() {
                 className={`${c.tall ? 'max-h-16' : 'max-h-12'} w-auto max-w-full object-contain`}
                 loading="lazy"
               />
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ul>
+        </m.ul>
       </div>
     </section>
   )

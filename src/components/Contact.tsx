@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { Clock, Mail, MapPin, Phone, X } from 'lucide-react'
 import { company } from '../data/content'
 import { useI18n } from '../i18n'
@@ -58,7 +58,7 @@ export function Contact() {
       />
       <div className="relative mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-          <motion.ul
+          <m.ul
             variants={reduce ? undefined : stagger(0.05, 0.08)}
             initial={reduce ? undefined : 'hidden'}
             whileInView={reduce ? undefined : 'visible'}
@@ -68,7 +68,7 @@ export function Contact() {
             {info.map((item) => {
               const Icon = item.icon
               return (
-                <motion.li key={item.label} variants={reduce ? undefined : fadeUp} className="flex gap-4">
+                <m.li key={item.label} variants={reduce ? undefined : fadeUp} className="flex gap-4">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-surface text-accent-soft">
                     <Icon size={18} strokeWidth={1.75} aria-hidden />
                   </span>
@@ -88,12 +88,12 @@ export function Contact() {
                       )}
                     </div>
                   </div>
-                </motion.li>
+                </m.li>
               )
             })}
-          </motion.ul>
+          </m.ul>
 
-          <motion.form
+          <m.form
             onSubmit={onSubmit}
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export function Contact() {
             {topic && (
               <div className="mb-5 flex flex-wrap items-center gap-3">
                 <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{t.contact.form.topic}</span>
-                <motion.span
+                <m.span
                   key={topic}
                   initial={reduce ? false : { opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -119,7 +119,7 @@ export function Contact() {
                   >
                     <X size={12} aria-hidden />
                   </button>
-                </motion.span>
+                </m.span>
               </div>
             )}
             <div className="grid gap-4 sm:grid-cols-2">
@@ -144,7 +144,7 @@ export function Contact() {
                 {sent ? t.contact.form.sentHint : t.contact.form.hint}
               </p>
             </div>
-          </motion.form>
+          </m.form>
         </div>
       </div>
     </section>

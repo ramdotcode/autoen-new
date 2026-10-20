@@ -42,7 +42,7 @@ export function Footer() {
         <div className="mt-16 flex flex-col gap-10 border-t border-line pt-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
             <Link to="/" className="flex items-center gap-3">
-              <img src="/img/logo.png" alt="" width={32} height={32} className="h-8 w-8 rounded-md object-contain" />
+              <img src="/img/logo.webp" alt="" width={32} height={32} className="h-8 w-8 rounded-md object-contain" />
               <span className="text-sm font-medium text-fg">{company.name}</span>
             </Link>
             <p className="mt-5 text-sm leading-relaxed text-muted">

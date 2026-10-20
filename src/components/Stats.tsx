@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { animate, motion, useInView, useReducedMotion } from 'motion/react'
+import { animate, m, useInView, useReducedMotion } from 'motion/react'
 import { useI18n } from '../i18n'
 import { stagger, fadeUp, viewportOnce } from '../lib/motion'
 
@@ -33,7 +33,7 @@ export function Stats() {
   const { t } = useI18n()
   return (
     <section className="border-y border-line bg-bg" aria-label={t.a11y.statistics}>
-      <motion.dl
+      <m.dl
         variants={reduce ? undefined : stagger(0, 0.1)}
         initial={reduce ? undefined : 'hidden'}
         whileInView={reduce ? undefined : 'visible'}
@@ -41,7 +41,7 @@ export function Stats() {
         className="mx-auto grid max-w-7xl grid-cols-2 divide-line md:grid-cols-4 md:divide-x"
       >
         {t.stats.map((s) => (
-          <motion.div
+          <m.div
             key={s.label}
             variants={reduce ? undefined : fadeUp}
             className="px-6 py-10 md:px-10 md:py-14"
@@ -50,9 +50,9 @@ export function Stats() {
               <Counter value={s.value} suffix={s.suffix} />
             </dd>
             <dt className="mt-2 font-mono text-xs uppercase tracking-[0.16em] text-dim">{s.label}</dt>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.dl>
+      </m.dl>
     </section>
   )
 }

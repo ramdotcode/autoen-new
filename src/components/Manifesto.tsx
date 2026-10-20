@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react'
+import { m, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useI18n } from '../i18n'
 
 function Word({
@@ -14,9 +14,9 @@ function Word({
   const opacity = useTransform(progress, range, [0.12, 1])
   const color = useTransform(progress, range, ['#3d4556', '#f3f4f6'])
   return (
-    <motion.span style={{ opacity, color }} className="inline-block">
+    <m.span style={{ opacity, color }} className="inline-block">
       {word}&nbsp;
-    </motion.span>
+    </m.span>
   )
 }
 

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useRef, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { AnimatePresence, m, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { Pointer } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { Button } from './ui/Button'
@@ -13,7 +13,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 /** A tapping hand that tells visitors the robot reacts to them; fades out after they try it. */
 function RobotHint({ label }: { label: string }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.4, ease } }}
@@ -23,7 +23,7 @@ function RobotHint({ label }: { label: string }) {
       <span className="sr-only">{label}</span>
       {/* Ripples start as the hand taps, once per 1.8s loop. */}
       {[0.8, 1.15].map((delay) => (
-        <motion.span
+        <m.span
           key={delay}
           className="absolute h-10 w-10 rounded-full border border-accent-soft/70"
           initial={{ scale: 0.9, opacity: 0 }}
@@ -31,14 +31,14 @@ function RobotHint({ label }: { label: string }) {
           transition={{ duration: 1.1, delay, repeat: Infinity, repeatDelay: 0.7, ease: 'easeOut' }}
         />
       ))}
-      <motion.span
+      <m.span
         animate={{ scale: [1, 1, 0.84, 1, 1], y: [0, -2, 1, 0, 0] }}
         transition={{ duration: 1.8, times: [0, 0.3, 0.45, 0.6, 1], repeat: Infinity, ease: 'easeInOut' }}
         className="relative flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-surface/80 text-fg shadow-lg shadow-black/40 backdrop-blur-md"
       >
         <Pointer className="h-4 w-4" strokeWidth={2} />
-      </motion.span>
-    </motion.div>
+      </m.span>
+    </m.div>
   )
 }
 
@@ -95,22 +95,33 @@ export function Hero() {
         aria-hidden
       />
 
-      <motion.div
+      <m.div
         style={{ y: robotY }}
         className="pointer-events-none absolute inset-x-0 top-[7%] h-[58svh] opacity-60 sm:opacity-90 lg:left-auto lg:right-0 lg:top-[6%] lg:h-[90%] lg:w-[58%] lg:opacity-100"
         aria-hidden
       >
-        <motion.div
+        <m.div
           initial={reduce ? false : { opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.4, ease, delay: 0.1 }}
-          className="h-full w-full"
+          className="relative h-full w-full"
         >
+          {/* A still of the robot's first frame shows at once and fades out as the 3D scene
+              takes over. The tall still is framed to the container width, the wide one to its height. */}
+          <picture>
+            <source media="(min-width: 640px)" srcSet="/img/robot-poster-wide.webp" />
+            <img
+              src="/img/robot-poster-tall.webp"
+              alt=""
+              decoding="async"
+              className={`absolute left-0 top-1/2 h-auto w-full -translate-y-1/2 transition-opacity duration-700 sm:left-1/2 sm:top-0 sm:h-full sm:w-auto sm:max-w-none sm:-translate-x-1/2 sm:translate-y-0 ${robotReady ? 'opacity-0' : 'opacity-100'}`}
+            />
+          </picture>
           <Suspense fallback={null}>
-            <RobotArm className="h-full w-full" onReady={onRobotReady} onInteract={onRobotInteract} />
+            <RobotArm className="relative h-full w-full" onReady={onRobotReady} onInteract={onRobotInteract} />
           </Suspense>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       <div className="pointer-events-none absolute inset-x-0 top-[22%] z-10 flex justify-center px-6 lg:inset-x-auto lg:right-[24%] lg:top-[30%] lg:translate-x-1/2 lg:px-0">
         <AnimatePresence>
@@ -120,23 +131,23 @@ export function Hero() {
         </AnimatePresence>
       </div>
 
-      <motion.div
+      <m.div
         style={{ y: textY, opacity: fade }}
         className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:px-8 md:pb-24 lg:py-16"
       >
-        <motion.p
+        <m.p
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
           className="eyebrow mb-6"
         >
           {t.hero.eyebrow}
-        </motion.p>
+        </m.p>
 
         <h1 className="max-w-4xl text-[2.75rem] font-medium leading-[1.02] tracking-[-0.035em] text-fg sm:text-6xl md:text-7xl lg:text-[5.25rem]">
           {t.hero.titleLines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
-              <motion.span
+              <m.span
                 custom={i}
                 variants={reduce ? undefined : lineVariants}
                 initial={reduce ? undefined : 'hidden'}
@@ -144,21 +155,21 @@ export function Hero() {
                 className="block"
               >
                 <HeadlineLine line={line} highlight={t.hero.highlight} />
-              </motion.span>
+              </m.span>
             </span>
           ))}
         </h1>
 
-        <motion.p
+        <m.p
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.65 }}
           className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg"
         >
           {t.hero.subtitle}
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.8 }}
@@ -170,10 +181,10 @@ export function Hero() {
           <Button to="/products" variant="ghost">
             {t.hero.secondaryCta}
           </Button>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
@@ -183,7 +194,7 @@ export function Hero() {
         <span className="h-px w-8 bg-line-strong" />
         {t.hero.scroll}
         <span className="h-px w-8 bg-line-strong" />
-      </motion.div>
+      </m.div>
     </section>
   )
 }

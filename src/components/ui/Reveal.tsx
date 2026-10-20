@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { fadeUp, viewportOnce } from '../../lib/motion'
 
@@ -11,7 +11,7 @@ type Props = {
 
 export function Reveal({ children, className, delay = 0, as = 'div' }: Props) {
   const reduce = useReducedMotion()
-  const Tag = motion[as]
+  const Tag = m[as]
   return (
     <Tag
       className={className}

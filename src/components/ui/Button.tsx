@@ -1,9 +1,9 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 
-const MotionLink = motion.create(Link)
+const MotionLink = m.create(Link)
 
 type Props = {
   /** In-site route (client-side navigation). */
@@ -60,14 +60,14 @@ export function Button({
   }
   if (href) {
     return (
-      <motion.a href={href} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>
+      <m.a href={href} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>
         {content}
-      </motion.a>
+      </m.a>
     )
   }
   return (
-    <motion.button type={type} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>
+    <m.button type={type} className={cls} whileHover={hover} whileTap={tap} onClick={onClick}>
       {content}
-    </motion.button>
+    </m.button>
   )
 }

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { useI18n } from '../i18n'
 import { Reveal } from './ui/Reveal'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
@@ -25,7 +25,7 @@ export function Profile() {
             </Reveal>
           ))}
 
-          <motion.dl
+          <m.dl
             variants={reduce ? undefined : stagger(0.15, 0.08)}
             initial={reduce ? undefined : 'hidden'}
             whileInView={reduce ? undefined : 'visible'}
@@ -33,12 +33,12 @@ export function Profile() {
             className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-3"
           >
             {t.profile.facts.map((f) => (
-              <motion.div key={f.label} variants={reduce ? undefined : fadeUp} className="bg-surface p-5">
+              <m.div key={f.label} variants={reduce ? undefined : fadeUp} className="bg-surface p-5">
                 <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-dim">{f.label}</dt>
                 <dd className="mt-2 text-sm text-fg">{f.value}</dd>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.dl>
+          </m.dl>
         </div>
 
         <div className="lg:col-span-6 lg:pt-2">
@@ -46,24 +46,24 @@ export function Profile() {
             <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-7 md:p-10">
               <div className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full bg-accent-red/10 blur-3xl" aria-hidden />
               <p className="eyebrow">{t.profile.missionTitle}</p>
-              <motion.ol
+              <m.ol
                 variants={reduce ? undefined : stagger(0.1, 0.1)}
                 initial={reduce ? undefined : 'hidden'}
                 whileInView={reduce ? undefined : 'visible'}
                 viewport={viewportOnce}
                 className="relative mt-6 divide-y divide-line"
               >
-                {t.profile.mission.map((m, i) => (
-                  <motion.li
-                    key={m}
+                {t.profile.mission.map((item, i) => (
+                  <m.li
+                    key={item}
                     variants={reduce ? undefined : fadeUp}
                     className="flex gap-5 py-5 first:pt-0 last:pb-0"
                   >
                     <span className="text-gradient font-mono text-sm">0{i + 1}</span>
-                    <p className="text-base leading-relaxed text-fg md:text-lg">{m}</p>
-                  </motion.li>
+                    <p className="text-base leading-relaxed text-fg md:text-lg">{item}</p>
+                  </m.li>
                 ))}
-              </motion.ol>
+              </m.ol>
             </div>
           </Reveal>
         </div>

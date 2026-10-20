@@ -163,10 +163,13 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
     } catch {
       return
     }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75))
+    // Phones and tablets get a lighter scene: lower resolution, no shadow map
+    // and no environment lighting. Soft blob shadows stand in for the real ones.
+    const lite = window.matchMedia('(pointer: coarse)').matches
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 1.75))
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     renderer.toneMappingExposure = 1.05
-    renderer.shadowMap.enabled = true
+    renderer.shadowMap.enabled = !lite
     renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.domElement.style.width = '100%'
     renderer.domElement.style.height = '100%'
@@ -174,15 +177,22 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
     host.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
-    const pmrem = new THREE.PMREMGenerator(renderer)
-    const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04)
-    scene.environment = envRT.texture
-    scene.environmentIntensity = 0.35
+    let disposeEnv = () => {}
+    if (!lite) {
+      const pmrem = new THREE.PMREMGenerator(renderer)
+      const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04)
+      scene.environment = envRT.texture
+      scene.environmentIntensity = 0.35
+      disposeEnv = () => {
+        envRT.dispose()
+        pmrem.dispose()
+      }
+    }
 
     const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60)
 
     // Lights: neutral key, brand-blue rim from behind, a faint red kicker.
-    scene.add(new THREE.HemisphereLight(0xb8c6ff, 0x0a0d14, 0.55))
+    scene.add(new THREE.HemisphereLight(0xb8c6ff, 0x0a0d14, lite ? 1.1 : 0.55))
     const key = new THREE.DirectionalLight(0xffffff, 2.4)
     key.position.set(5, 9, 6)
     key.castShadow = true
@@ -237,12 +247,39 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
     grid.rotation.x = -Math.PI / 2
     grid.position.set(1, 0, 0.3)
     scene.add(grid)
-    const shadowCatcher = new THREE.Mesh(floorGeo, new THREE.ShadowMaterial({ opacity: 0.45 }))
-    shadowCatcher.rotation.x = -Math.PI / 2
-    shadowCatcher.position.copy(grid.position)
-    shadowCatcher.position.y = 0.001
-    shadowCatcher.receiveShadow = true
-    scene.add(shadowCatcher)
+    if (!lite) {
+      const shadowCatcher = new THREE.Mesh(floorGeo, new THREE.ShadowMaterial({ opacity: 0.45 }))
+      shadowCatcher.rotation.x = -Math.PI / 2
+      shadowCatcher.position.copy(grid.position)
+      shadowCatcher.position.y = 0.001
+      shadowCatcher.receiveShadow = true
+      scene.add(shadowCatcher)
+    }
+
+    // Blob shadow: a soft dark ellipse on the floor (lite mode only).
+    const blobTex = (() => {
+      const cv = document.createElement('canvas')
+      cv.width = cv.height = 128
+      const g = cv.getContext('2d')!
+      const r = g.createRadialGradient(64, 64, 0, 64, 64, 64)
+      r.addColorStop(0, 'rgba(0,0,0,0.75)')
+      r.addColorStop(0.6, 'rgba(0,0,0,0.3)')
+      r.addColorStop(1, 'rgba(0,0,0,0)')
+      g.fillStyle = r
+      g.fillRect(0, 0, 128, 128)
+      return new THREE.CanvasTexture(cv)
+    })()
+    const blobGeo = new THREE.PlaneGeometry(1, 1)
+    blobGeo.rotateX(-Math.PI / 2)
+    const blob = (w: number, d: number, x: number, z: number, rotY = 0, opacity = 1) => {
+      const m = new THREE.Mesh(blobGeo, new THREE.MeshBasicMaterial({ map: blobTex, transparent: true, depthWrite: false, opacity }))
+      m.scale.set(w, 1, d)
+      m.position.set(x, 0.003, z)
+      m.rotation.y = rotY
+      m.visible = lite
+      scene.add(m)
+      return m
+    }
 
     // Shared materials.
     const steel = new THREE.MeshStandardMaterial({ color: 0x161b26, metalness: 0.55, roughness: 0.45 })
@@ -265,6 +302,10 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
     }
 
     block(0.95, PEDESTAL, 0.95, steel, frameEdge, scene, 0, PEDESTAL / 2, 0)
+    blob(2.2, 2.2, 0, 0)
+    blob(CONV.to - CONV.from + 0.6, 1.1, ((CONV.from + CONV.to) / 2) * Math.cos(CONV.az), ((CONV.from + CONV.to) / 2) * Math.sin(CONV.az), -CONV.az, 0.8)
+    blob(1.9, 1.6, PAL.r * Math.cos(PAL.az), PAL.r * Math.sin(PAL.az), -PAL.az)
+    const toolBlob = blob(0.9, 0.8, 0, 0, 0, 0.6)
 
     // Conveyor: frame, legs and rollers, running radially toward the robot.
     const conveyor = new THREE.Group()
@@ -338,6 +379,10 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
 
     const spawnBox = (r: number, age = 0) => {
       const mesh = makeBox()
+      const p = conveyorPose(r)
+      mesh.position.set(p.x, CONV.top + BOX.h / 2, p.z)
+      mesh.rotation.set(0, -CONV.az, 0)
+      mesh.scale.setScalar(age > 0 ? 1 : 0)
       conv.push({ mesh, r, age })
       scene.add(mesh)
     }
@@ -565,6 +610,8 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
       if (rig) poseRig(rig, q)
       const tip = fk(q)
       gripper.position.set(tip.x, tip.y + G.tool, tip.z)
+      toolBlob.position.set(tip.x, 0.004, tip.z)
+      toolBlob.rotation.y = -tip.yaw
       gripper.rotation.y = -tip.yaw
       placeCamera()
       renderer.render(scene, camera)
@@ -633,14 +680,6 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
       callbacks.current.onReady?.()
     })
 
-    if (reduce) {
-      // A still frame: mid-cycle above the pallet.
-      q = ik(above(slotPose(slot), 0.45))
-      held = makeBox()
-      gripper.add(held)
-      held.position.set(0, -G.tool - BOX.h / 2, 0)
-    }
-
     const ro = new ResizeObserver(resize)
     ro.observe(host)
     resize()
@@ -668,8 +707,8 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
         else mat?.dispose()
       })
       gridTex.dispose()
-      envRT.dispose()
-      pmrem.dispose()
+      blobTex.dispose()
+      disposeEnv()
       renderer.dispose()
       renderer.domElement.remove()
     }
@@ -678,7 +717,7 @@ export default function RobotArm({ className = '', onReady, onInteract }: Props)
   return (
     <div
       ref={hostRef}
-      className={`${className} transition-opacity duration-1000 ${ready ? 'opacity-100' : 'opacity-0'}`}
+      className={`${className} transition-opacity duration-500 ${ready ? 'opacity-100' : 'opacity-0'}`}
       aria-hidden="true"
     />
   )

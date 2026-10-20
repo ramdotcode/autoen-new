@@ -1,11 +1,11 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router'
 import { ArrowUpRight } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { fadeUp, stagger, viewportOnce } from '../lib/motion'
 
-const MotionLink = motion.create(Link)
+const MotionLink = m.create(Link)
 
 /** Home-page links to the inner pages. */
 export function Explore() {
@@ -16,7 +16,7 @@ export function Explore() {
     <section className="relative bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <SectionHeading eyebrow={t.pages.explore.eyebrow} title={t.pages.explore.title} />
-        <motion.ul
+        <m.ul
           variants={reduce ? undefined : stagger(0.1, 0.08)}
           initial={reduce ? undefined : 'hidden'}
           whileInView={reduce ? undefined : 'visible'}
@@ -24,7 +24,7 @@ export function Explore() {
           className="mt-14 grid gap-4 md:grid-cols-3"
         >
           {t.pages.explore.items.map((item, i) => (
-            <motion.li key={item.to} variants={reduce ? undefined : fadeUp}>
+            <m.li key={item.to} variants={reduce ? undefined : fadeUp}>
               <MotionLink
                 to={item.to}
                 whileHover={reduce ? undefined : { y: -4 }}
@@ -44,9 +44,9 @@ export function Explore() {
                   <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
                 </div>
               </MotionLink>
-            </motion.li>
+            </m.li>
           ))}
-        </motion.ul>
+        </m.ul>
       </div>
     </section>
   )

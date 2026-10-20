@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router'
 import { useI18n } from '../i18n'
 
@@ -17,7 +17,7 @@ export function PageIntro({ title, text }: { title: string; text: string }) {
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-6 md:px-8">
-        <motion.nav
+        <m.nav
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -31,26 +31,26 @@ export function PageIntro({ title, text }: { title: string; text: string }) {
           <span className="text-accent-soft" aria-current="page">
             {title}
           </span>
-        </motion.nav>
+        </m.nav>
         <h1 className="mt-6 overflow-hidden text-[2.75rem] font-medium leading-[1.02] tracking-[-0.035em] text-fg sm:text-6xl md:text-7xl">
-          <motion.span
+          <m.span
             initial={reduce ? false : { y: '100%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease, delay: 0.15 }}
             className="block"
           >
             {title}
-          </motion.span>
+          </m.span>
         </h1>
-        <motion.p
+        <m.p
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease, delay: 0.35 }}
           className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg"
         >
           {text}
-        </motion.p>
-        <motion.span
+        </m.p>
+        <m.span
           initial={reduce ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, ease, delay: 0.45 }}

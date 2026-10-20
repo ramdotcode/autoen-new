@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, m, useReducedMotion } from 'motion/react'
 import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
 import { Reveal } from './ui/Reveal'
@@ -65,7 +65,7 @@ export function CoreValues() {
             >
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/15 blur-3xl" aria-hidden />
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={current.title}
                   initial={reduce ? false : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export function CoreValues() {
                   </p>
                   <h3 className="mt-4 text-3xl font-medium tracking-[-0.03em] text-fg md:text-4xl">{current.title}</h3>
                   <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{current.text}</p>
-                </motion.div>
+                </m.div>
               </AnimatePresence>
             </div>
           </Reveal>

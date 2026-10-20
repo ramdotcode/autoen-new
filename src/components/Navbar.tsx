@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, m, useReducedMotion } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { company } from '../data/content'
 import { useI18n } from '../i18n'
@@ -9,7 +9,7 @@ import { LanguageToggle } from './ui/LanguageToggle'
 import { Identity, IdentityStrip } from './ui/Identity'
 import { contactHref } from '../lib/inquiry'
 
-const MotionLink = motion.create(Link)
+const MotionLink = m.create(Link)
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -33,7 +33,7 @@ export function Navbar() {
   }, [open])
 
   return (
-    <motion.header
+    <m.header
       initial={reduce ? false : { y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
@@ -41,7 +41,7 @@ export function Navbar() {
     >
       <AnimatePresence initial={false}>
         {!scrolled && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -49,7 +49,7 @@ export function Navbar() {
             className="hidden overflow-hidden border-b border-line md:block"
           >
             <IdentityStrip />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
       <div
@@ -61,7 +61,7 @@ export function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-[72px] md:px-8">
           <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-3" aria-label={`${company.name} ${t.a11y.home}`}>
-            <img src="/img/logo.png" alt="" width={36} height={36} className="h-9 w-9 rounded-md object-contain" />
+            <img src="/img/logo.webp" alt="" width={36} height={36} className="h-9 w-9 rounded-md object-contain" />
             <span className="hidden text-sm font-medium tracking-tight text-fg sm:block">
               {company.name}
             </span>
@@ -81,9 +81,7 @@ export function Navbar() {
                   <>
                     {item.label}
                     {isActive && (
-                      <motion.span
-                        layoutId="nav-active"
-                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      <span
                         className="absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-accent-red via-violet-500 to-accent"
                         aria-hidden
                       />
@@ -118,7 +116,7 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -150,17 +148,17 @@ export function Navbar() {
                 </Button>
               </div>
             </nav>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + t.nav.length * 0.05 }}
               className="mx-6 mt-8 mb-10 border-t border-line pt-6"
             >
               <Identity className="px-3" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </m.header>
   )
 }

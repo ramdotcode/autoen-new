@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { m, useReducedMotion } from 'motion/react'
 import { ClipboardList, Headset, PenTool, Wrench } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { SectionHeading } from './ui/SectionHeading'
@@ -43,7 +43,7 @@ function WorkCycle() {
         </defs>
         <circle cx={C} cy={C} r={R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
         <circle cx={C} cy={C} r={R - 34} fill="none" stroke="rgba(255,255,255,0.05)" strokeDasharray="2 6" />
-        <motion.g
+        <m.g
           style={{ transformOrigin: `${C}px ${C}px`, transformBox: 'view-box' }}
           animate={reduce ? undefined : { rotate: 360 }}
           transition={{ duration: CYCLE_SECONDS, ease: 'linear', repeat: Infinity }}
@@ -62,7 +62,7 @@ function WorkCycle() {
           />
           <circle cx={C} cy={C - R} r="10" fill="#60a5fa" opacity="0.25" />
           <circle cx={C} cy={C - R} r="5" fill="#f3f4f6" />
-        </motion.g>
+        </m.g>
       </svg>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -81,7 +81,7 @@ function WorkCycle() {
             style={stepPositions[i]}
           >
             <div className="relative flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-fg sm:px-4 sm:py-2 sm:text-sm">
-              <motion.span
+              <m.span
                 className="absolute -inset-px rounded-full border border-accent-soft/70 shadow-[0_0_24px_-2px_rgba(96,165,250,0.6)]"
                 initial={{ opacity: 0 }}
                 animate={reduce ? { opacity: 0 } : { opacity: [0, 1, 1, 0, 0] }}
@@ -116,7 +116,7 @@ export function WhyUs() {
     <section className="relative overflow-hidden bg-bg py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          <motion.div
+          <m.div
             initial={reduce ? false : { opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={viewportOnce}
@@ -124,14 +124,14 @@ export function WhyUs() {
             className="relative order-2 lg:order-1"
           >
             <WorkCycle />
-          </motion.div>
+          </m.div>
 
           <div className="order-1 lg:order-2">
             <SectionHeading
               eyebrow={t.whyUs.eyebrow}
               title={t.whyUs.title}
             />
-            <motion.ul
+            <m.ul
               variants={reduce ? undefined : stagger(0.15, 0.08)}
               initial={reduce ? undefined : 'hidden'}
               whileInView={reduce ? undefined : 'visible'}
@@ -139,7 +139,7 @@ export function WhyUs() {
               className="mt-10 divide-y divide-line border-y border-line"
             >
               {t.whyUs.items.map((w, i) => (
-                <motion.li
+                <m.li
                   key={w.title}
                   variants={reduce ? undefined : fadeUp}
                   className="group flex gap-5 py-5 transition-colors"
@@ -151,9 +151,9 @@ export function WhyUs() {
                     </h3>
                     <p className="mt-1 text-sm leading-relaxed text-muted">{w.text}</p>
                   </div>
-                </motion.li>
+                </m.li>
               ))}
-            </motion.ul>
+            </m.ul>
           </div>
         </div>
       </div>

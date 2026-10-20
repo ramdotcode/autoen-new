@@ -136,10 +136,22 @@ const above = (p: Pose, dy: number): Pose => ({ ...p, y: p.y + dy })
 
 type Task = (dt: number) => boolean
 
-export default function RobotArm({ className = '' }: { className?: string }) {
+type Props = {
+  className?: string
+  /** Called once the model has loaded and the robot is moving. */
+  onReady?: () => void
+  /** Called on the first cursor move or touch that the arm reacts to. */
+  onInteract?: () => void
+}
+
+export default function RobotArm({ className = '', onReady, onInteract }: Props) {
   const hostRef = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
   const [ready, setReady] = useState(false)
+  const callbacks = useRef({ onReady, onInteract })
+  useEffect(() => {
+    callbacks.current = { onReady, onInteract }
+  }, [onReady, onInteract])
 
   useEffect(() => {
     const host = hostRef.current
@@ -443,12 +455,12 @@ export default function RobotArm({ className = '' }: { className?: string }) {
     let parallax = 0
     let parallaxTarget = 0
 
-    const onPointer = (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') return
-      parallaxTarget = (e.clientX / window.innerWidth) * 2 - 1
+    let interacted = false
+    const aimAt = (clientX: number, clientY: number) => {
+      parallaxTarget = (clientX / window.innerWidth) * 2 - 1
       const rect = renderer.domElement.getBoundingClientRect()
       if (!rect.width || !rect.height) return
-      ndc.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1)
+      ndc.set(((clientX - rect.left) / rect.width) * 2 - 1, -((clientY - rect.top) / rect.height) * 2 + 1)
       raycaster.setFromCamera(ndc, camera)
       // A vertical plane between the robot and the camera catches the cursor ray.
       const toCam = new THREE.Vector3(camera.position.x, 0, camera.position.z).normalize()
@@ -459,6 +471,23 @@ export default function RobotArm({ className = '' }: { className?: string }) {
       const r = clamp(Math.hypot(hit.x, hit.z), 1.9, 2.5)
       aim = { x: r * Math.cos(az), y: clamp(hit.y, 1.3, 2.2), z: r * Math.sin(az), yaw: az }
       followUntil = performance.now() + 1700
+      if (rig && !interacted) {
+        interacted = true
+        callbacks.current.onInteract?.()
+      }
+    }
+    const onPointer = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') aimAt(e.clientX, e.clientY)
+    }
+    // Touch uses touch events: they keep firing while the page scrolls,
+    // pointer events get cancelled as soon as scrolling starts.
+    const section = host.closest('section') ?? host
+    const onTouch = (e: TouchEvent) => {
+      const touch = e.touches[0]
+      if (!touch) return
+      const box = section.getBoundingClientRect()
+      if (touch.clientY < box.top || touch.clientY > box.bottom) return
+      aimAt(touch.clientX, touch.clientY)
     }
 
     // ---- Frame loop -------------------------------------------------------
@@ -601,6 +630,7 @@ export default function RobotArm({ className = '' }: { className?: string }) {
       robot.add(gltf.scene)
       draw()
       setReady(true)
+      callbacks.current.onReady?.()
     })
 
     if (reduce) {
@@ -616,7 +646,11 @@ export default function RobotArm({ className = '' }: { className?: string }) {
     resize()
     const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()))
     io.observe(host)
-    if (!reduce) window.addEventListener('pointermove', onPointer, { passive: true })
+    if (!reduce) {
+      window.addEventListener('pointermove', onPointer, { passive: true })
+      window.addEventListener('touchstart', onTouch, { passive: true })
+      window.addEventListener('touchmove', onTouch, { passive: true })
+    }
 
     return () => {
       disposed = true
@@ -624,6 +658,8 @@ export default function RobotArm({ className = '' }: { className?: string }) {
       ro.disconnect()
       io.disconnect()
       window.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('touchstart', onTouch)
+      window.removeEventListener('touchmove', onTouch)
       scene.traverse((o) => {
         const m = o as THREE.Mesh
         m.geometry?.dispose()

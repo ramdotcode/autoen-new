@@ -42,6 +42,7 @@ export type Dictionary = {
     primaryCta: string
     secondaryCta: string
     scroll: string
+    robotHint: { mouse: string; touch: string }
   }
 
   manifesto: { eyebrow: string; text: string }

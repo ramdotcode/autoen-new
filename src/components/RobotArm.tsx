@@ -345,37 +345,34 @@ export default function RobotArm({ className = '' }: { className?: string }) {
       let t: Task | null = null
       return (dt) => (t ??= make())(dt)
     }
-    const jointTo = (target: () => Pose): Task =>
-      later(() => {
-        const q0 = { ...q }
-        const q1 = ik(target())
-        const d1 = wrap(q1.t1 - q0.t1)
-        const d4 = wrap(q1.t4 - q0.t4)
-        const span = Math.max(Math.abs(d1), Math.abs(q1.al - q0.al), Math.abs(q1.be - q0.be), Math.abs(d4) * 0.5)
-        const dur = 0.55 + span * 0.75
-        let t = 0
-        return (dt) => {
-          t = Math.min(1, t + dt / dur)
-          const s = ease(t)
-          q = { t1: q0.t1 + d1 * s, al: lerp(q0.al, q1.al, s), be: lerp(q0.be, q1.be, s), t4: q0.t4 + d4 * s }
-          return t >= 1
-        }
-      })
-    const lineTo = (target: () => Pose): Task =>
+    // One blended pick-and-place move, the way a palletizer program runs it:
+    // a vertical lift, a swing around the base at a safe height, then a
+    // vertical set-down, with the phases overlapping so the corners round off.
+    // Interpolating azimuth/reach/height keeps the tool on an arc around the
+    // base, so the arm never pulls in across its own body.
+    const transfer = (target: () => Pose): Task =>
       later(() => {
         const p0 = fk(q)
         const p1 = target()
-        const dur = 0.3 + Math.hypot(p1.x - p0.x, p1.y - p0.y, p1.z - p0.z) * 0.9
+        const az0 = Math.atan2(p0.z, p0.x)
+        const daz = wrap(Math.atan2(p1.z, p1.x) - az0)
+        const r0 = Math.hypot(p0.x, p0.z)
+        const r1 = Math.hypot(p1.x, p1.z)
+        const dyaw = wrap(p1.yaw - p0.yaw)
+        const top = Math.max(p0.y, p1.y)
+        const yc = Math.max(top, clamp(top + 0.4, 1.4, 2.1))
+        const dur = 0.9 + Math.abs(daz) * 0.45 + Math.abs(r1 - r0) * 0.4 + (2 * yc - p0.y - p1.y) * 0.35
         let t = 0
         return (dt) => {
           t = Math.min(1, t + dt / dur)
-          const s = ease(t)
-          q = ik({
-            x: lerp(p0.x, p1.x, s),
-            y: lerp(p0.y, p1.y, s),
-            z: lerp(p0.z, p1.z, s),
-            yaw: p0.yaw + wrap(p1.yaw - p0.yaw) * s,
-          })
+          const h = ease(clamp((t - 0.16) / 0.68, 0, 1))
+          const y =
+            t < 0.5
+              ? lerp(p0.y, yc, ease(clamp(t / 0.34, 0, 1)))
+              : lerp(yc, p1.y, ease(clamp((t - 0.66) / 0.34, 0, 1)))
+          const az = az0 + daz * h
+          const r = lerp(r0, r1, h)
+          q = ik({ x: r * Math.cos(az), y, z: r * Math.sin(az), yaw: p0.yaw + dyaw * h })
           return t >= 1
         }
       })
@@ -394,30 +391,25 @@ export default function RobotArm({ className = '' }: { className?: string }) {
     const placeTasks = (): Task[] => {
       const i = slot
       return [
-        jointTo(() => above(slotPose(i), 0.45)),
         waitUntil(() => fade < 0),
-        lineTo(() => slotPose(i)),
-        dwell(0.18, () => {
+        transfer(() => slotPose(i)),
+        dwell(0.2, () => {
           if (held) placeBox(held, i)
           held = null
           slot++
           gripGlow = 1
-        }),
-        lineTo(() => above(slotPose(i), 0.45)),
-        run(() => {
           if (slot >= SLOTS) {
             slot = 0
             fade = 0
           }
-          tasks = pickTasks()
         }),
+        run(() => (tasks = pickTasks())),
       ]
     }
     const pickTasks = (): Task[] => [
-      jointTo(() => above(conveyorPose(CONV.pick), 0.45)),
       waitUntil(() => conv.length > 0 && conv[0].r <= CONV.pick + 1e-3 && conv[0].age > 0.4),
-      lineTo(() => conveyorPose(CONV.pick)),
-      dwell(0.18, () => {
+      transfer(() => conveyorPose(CONV.pick)),
+      dwell(0.2, () => {
         const front = conv.shift()
         if (!front) return
         held = front.mesh
@@ -427,7 +419,6 @@ export default function RobotArm({ className = '' }: { className?: string }) {
         gripper.add(held)
         gripGlow = 1
       }),
-      lineTo(() => above(conveyorPose(CONV.pick), 0.5)),
       run(() => (tasks = placeTasks())),
     ]
     const resume = () => {
@@ -465,8 +456,8 @@ export default function RobotArm({ className = '' }: { className?: string }) {
       if (!raycaster.ray.intersectPlane(plane, hit)) return
       const camAz = Math.atan2(toCam.z, toCam.x)
       const az = camAz + clamp(wrap(Math.atan2(hit.z, hit.x) - camAz), -1.35, 1.35)
-      const r = clamp(Math.hypot(hit.x, hit.z), 1.55, 2.45)
-      aim = { x: r * Math.cos(az), y: clamp(hit.y, 1.15, 2.35), z: r * Math.sin(az), yaw: az }
+      const r = clamp(Math.hypot(hit.x, hit.z), 1.9, 2.5)
+      aim = { x: r * Math.cos(az), y: clamp(hit.y, 1.3, 2.2), z: r * Math.sin(az), yaw: az }
       followUntil = performance.now() + 1700
     }
 
@@ -522,8 +513,10 @@ export default function RobotArm({ className = '' }: { className?: string }) {
           be: q.be + step(goal.be - q.be, 1.2),
           t4: q.t4 + step(wrap(goal.t4 - q.t4), 3),
         }
-      } else if (tasks.length && tasks[0](dt)) {
-        tasks.shift()
+      } else if (tasks.length) {
+        // A task may swap in the next cycle's list; only drop it if it is still first.
+        const current = tasks[0]
+        if (current(dt) && tasks[0] === current) tasks.shift()
       }
 
       gripGlow = Math.max(0, gripGlow - dt * 2.2)
